@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-// 👇 onNavigate එක මෙතනට ගත්තා
 export default function Hero({ visitorCount, onNavigate }) {
   const cardRef = useRef(null);
   const [typingText, setTypingText] = useState('');
@@ -62,7 +61,11 @@ export default function Hero({ visitorCount, onNavigate }) {
         
         <div className="md:col-span-7 space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100/50 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-200 text-xs font-bold uppercase tracking-wide border border-emerald-200 dark:border-emerald-800">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Open to Work & Collaboration
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                Open to Work & Collaboration
             </div>
             
             <h1 className="text-4xl sm:text-5xl font-extrabold text-stone-900 dark:text-white leading-tight">
@@ -76,11 +79,11 @@ export default function Hero({ visitorCount, onNavigate }) {
             </p>
             
             <div className="flex flex-wrap gap-4 pt-2">
-                <a href="https://www.linkedin.com/in/pethum-kashmira/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg shadow-sm transition-all transform hover:-translate-y-0.5">
+                <a href="https://www.linkedin.com/in/pethum-kashmira/" target="_blank" rel="noreferrer" className="group px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg shadow-sm transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
                     LinkedIn Profile
+                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                 </a>
                 
-                {/* 🔥 Button Fixed Here */}
                 <button 
                     onClick={() => onNavigate('fiverr-gigs')} 
                     className="px-6 py-3 bg-white dark:bg-stone-800 border border-stone-300 dark:border-stone-700 text-stone-700 dark:text-stone-200 font-semibold rounded-lg hover:bg-stone-50 dark:hover:bg-stone-700 transition-colors"
@@ -96,7 +99,7 @@ export default function Hero({ visitorCount, onNavigate }) {
                 </a>
             </div>
 
-            <div className="mt-6 flex items-center gap-3 animate-pulse">
+            <div className="mt-6 flex items-center gap-3">
                 <div className="flex -space-x-2">
                     <img className="inline-block h-8 w-8 rounded-full ring-2 ring-white dark:ring-stone-900 object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=64&h=64" alt=""/>
                     <img className="inline-block h-8 w-8 rounded-full ring-2 ring-white dark:ring-stone-900 object-cover" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=64&h=64" alt=""/>

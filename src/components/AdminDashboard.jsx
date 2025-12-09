@@ -49,7 +49,7 @@ export default function AdminDashboard({ editItem, setEditItem, user, isAdmin })
   // Forms State
   const [articleMode, setArticleMode] = useState('link');
   
-  // 🔥 INITIAL STATES (Missing fields added)
+  // 🔥 INITIAL STATES
   const [artForm, setArtForm] = useState({ title:'', cat:'', read:'', desc:'', img:'', link:'', content:'' });
   const [serForm, setSerForm] = useState({ title:'', desc:'', price:'', rating:'', img:'', link:'' });
   const [journeyForm, setJourneyForm] = useState({ title:'', place:'', date:'', desc:'', type:'edu' });
@@ -166,19 +166,30 @@ export default function AdminDashboard({ editItem, setEditItem, user, isAdmin })
       {/* HEADER */}
       <div className="flex justify-between items-center mb-6 pb-2 border-b border-stone-700">
           <div className="flex gap-4 items-center">
-              <button onClick={() => setIsMinimized(!isMinimized)} className="bg-stone-700 hover:bg-stone-600 p-2 rounded-full">{isMinimized ? '🔽' : '🔼'}</button>
+              <button onClick={() => setIsMinimized(!isMinimized)} className="bg-stone-700 hover:bg-stone-600 p-2 rounded-full transition-colors">
+                  {isMinimized ? (
+                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
+                  ) : (
+                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 15l7-7 7 7" /></svg>
+                  )}
+              </button>
               
-              <button onClick={() => setActiveTab('dashboard')} className={`text-lg font-bold ${activeTab === 'dashboard' ? 'text-emerald-400' : 'text-stone-400'}`}>
-                🔥 {isAdmin ? 'Admin Panel' : 'Creator Dashboard'}
+              <button onClick={() => setActiveTab('dashboard')} className={`text-lg font-bold flex items-center gap-2 transition-colors ${activeTab === 'dashboard' ? 'text-emerald-400' : 'text-stone-400'}`}>
+                <svg className="w-6 h-6 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z" /></svg>
+                {isAdmin ? 'Admin Panel' : 'Creator Dashboard'}
               </button>
               
               {isAdmin && !isMinimized && (
-                  <button onClick={() => setActiveTab('chat')} className={`text-lg font-bold flex items-center gap-2 ${activeTab === 'chat' ? 'text-blue-400' : 'text-stone-400'}`}>
-                    💬 Chat <span className="text-xs bg-red-600 px-2 rounded-full text-white">{chats.filter(c => c.unread).length}</span>
+                  <button onClick={() => setActiveTab('chat')} className={`text-lg font-bold flex items-center gap-2 transition-colors ${activeTab === 'chat' ? 'text-blue-400' : 'text-stone-400'}`}>
+                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" /></svg>
+                    Chat <span className="text-xs bg-red-600 px-2 rounded-full text-white">{chats.filter(c => c.unread).length}</span>
                   </button>
               )}
           </div>
-          <button onClick={handleLogout} className="text-xs bg-red-600 px-3 py-1 rounded">Logout</button>
+          <button onClick={handleLogout} className="text-xs bg-red-600 hover:bg-red-700 px-3 py-1 rounded flex items-center gap-1 transition-colors">
+              <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" /></svg>
+              Logout
+          </button>
       </div>
 
       {!isMinimized && (
@@ -189,7 +200,7 @@ export default function AdminDashboard({ editItem, setEditItem, user, isAdmin })
                     <div className="w-1/3 border-r border-stone-700 pr-2 overflow-y-auto custom-scrollbar">
                         {chats.length === 0 && <p className="text-stone-500 text-sm">No chats.</p>}
                         {chats.map(chat => (
-                            <div key={chat.id} onClick={() => setSelectedChat(chat)} className={`p-3 rounded cursor-pointer mb-2 ${selectedChat?.id === chat.id ? 'bg-stone-700' : 'bg-stone-800 hover:bg-stone-700'}`}>
+                            <div key={chat.id} onClick={() => setSelectedChat(chat)} className={`p-3 rounded cursor-pointer mb-2 transition-colors ${selectedChat?.id === chat.id ? 'bg-stone-700' : 'bg-stone-800 hover:bg-stone-700'}`}>
                                 <div className="flex justify-between"><span className="font-bold text-sm text-emerald-400">Guest</span>{chat.unread && <span className="w-2 h-2 bg-red-500 rounded-full"></span>}</div>
                                 <p className="text-xs text-stone-400 truncate">{chat.msgs?.[chat.msgs.length-1]?.text || 'Msg'}</p>
                             </div>
@@ -208,7 +219,7 @@ export default function AdminDashboard({ editItem, setEditItem, user, isAdmin })
                                 </div>
                                 <form onSubmit={handleSendReply} className="p-2 bg-stone-700 flex gap-2">
                                     <input value={replyMsg} onChange={e=>setReplyMsg(e.target.value)} placeholder="Reply..." className="flex-1 px-3 py-2 bg-stone-900 rounded text-sm text-white outline-none" />
-                                    <button type="submit" className="bg-blue-500 px-4 py-1 rounded font-bold">Send</button>
+                                    <button type="submit" className="bg-blue-500 hover:bg-blue-600 px-4 py-1 rounded font-bold transition-colors">Send</button>
                                 </form>
                             </>
                         ) : <div className="flex items-center justify-center h-full text-stone-500">Select Chat</div>}
@@ -222,11 +233,14 @@ export default function AdminDashboard({ editItem, setEditItem, user, isAdmin })
                     
                     {/* ARTICLES FORM */}
                     <div className={`bg-stone-800 p-4 rounded-xl border ${editItem?.type === 'articles' ? 'border-emerald-500' : 'border-stone-700'} md:col-span-2`}>
-                        <h3 className="font-bold mb-3 flex justify-between items-center">
-                            <span>📝 Article Editor</span>
+                        <h3 className="font-bold mb-3 flex justify-between items-center text-emerald-400">
+                            <span className="flex items-center gap-2">
+                                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
+                                Article Editor
+                            </span>
                             <div className="flex bg-stone-700 rounded p-1">
-                                <button onClick={() => setArticleMode('link')} className={`px-3 py-1 text-xs rounded ${articleMode==='link' ? 'bg-emerald-600 text-white' : 'text-stone-400'}`}>Link</button>
-                                <button onClick={() => setArticleMode('write')} className={`px-3 py-1 text-xs rounded ${articleMode==='write' ? 'bg-emerald-600 text-white' : 'text-stone-400'}`}>Write</button>
+                                <button onClick={() => setArticleMode('link')} className={`px-3 py-1 text-xs rounded transition-colors ${articleMode==='link' ? 'bg-emerald-600 text-white' : 'text-stone-400'}`}>Link</button>
+                                <button onClick={() => setArticleMode('write')} className={`px-3 py-1 text-xs rounded transition-colors ${articleMode==='write' ? 'bg-emerald-600 text-white' : 'text-stone-400'}`}>Write</button>
                             </div>
                         </h3>
                         <form onSubmit={(e) => handleSubmit(e, 'articles', artForm, { title:'', cat:'', read:'', desc:'', img:'', link:'', content:'' })} className="flex flex-col gap-2">
@@ -254,7 +268,7 @@ export default function AdminDashboard({ editItem, setEditItem, user, isAdmin })
                                     />
                                 </div>
                             )}
-                            <button type="submit" disabled={loading} className="bg-emerald-600 py-2 rounded font-bold text-sm mt-2">{loading ? 'Saving...' : 'Publish Article'}</button>
+                            <button type="submit" disabled={loading} className="bg-emerald-600 hover:bg-emerald-700 py-2 rounded font-bold text-sm mt-2 transition-colors">{loading ? 'Saving...' : 'Publish Article'}</button>
                         </form>
                     </div>
 
@@ -262,9 +276,12 @@ export default function AdminDashboard({ editItem, setEditItem, user, isAdmin })
                     {isAdmin && (
                         <div className="space-y-6">
                             
-                            {/* 🔥 SERVICES FORM (FULLY FIXED) */}
+                            {/* 🔥 SERVICES FORM */}
                             <div className="bg-stone-800 p-4 rounded-xl border border-stone-700">
-                                <h3 className="font-bold mb-3 text-indigo-400">💼 Services (Fiverr)</h3>
+                                <h3 className="font-bold mb-3 text-indigo-400 flex items-center gap-2">
+                                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                                    Services (Fiverr)
+                                </h3>
                                 <form onSubmit={(e) => handleSubmit(e, 'services', serForm, { title:'', desc:'', price:'', rating:'', img:'', link:'' })} className="flex flex-col gap-2">
                                     <input value={serForm.title} onChange={e => setSerForm({...serForm, title: e.target.value})} placeholder="Gig Title" required className="px-3 py-2 bg-stone-700 rounded text-sm" />
                                     <textarea value={serForm.desc} onChange={e => setSerForm({...serForm, desc: e.target.value})} placeholder="Service Description" required className="px-3 py-2 bg-stone-700 rounded text-sm" />
@@ -281,9 +298,12 @@ export default function AdminDashboard({ editItem, setEditItem, user, isAdmin })
                                 </form>
                             </div>
 
-                            {/* 🔥 JOURNEY FORM (FULLY FIXED) */}
+                            {/* 🔥 JOURNEY FORM */}
                             <div className="bg-stone-800 p-4 rounded-xl border border-stone-700">
-                                <h3 className="font-bold mb-3 text-amber-400">🚀 Journey (Timeline)</h3>
+                                <h3 className="font-bold mb-3 text-amber-400 flex items-center gap-2">
+                                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                                    Journey (Timeline)
+                                </h3>
                                 <form onSubmit={(e) => handleSubmit(e, 'journey', journeyForm, { title:'', place:'', date:'', desc:'', type:'edu' })} className="flex flex-col gap-2">
                                     <input value={journeyForm.title} onChange={e => setJourneyForm({...journeyForm, title: e.target.value})} placeholder="Title (e.g BSc Degree)" required className="px-3 py-2 bg-stone-700 rounded text-sm" />
                                     <input value={journeyForm.place} onChange={e => setJourneyForm({...journeyForm, place: e.target.value})} placeholder="Place (e.g University of Ruhuna)" required className="px-3 py-2 bg-stone-700 rounded text-sm" />
@@ -313,8 +333,12 @@ export default function AdminDashboard({ editItem, setEditItem, user, isAdmin })
                                     <div key={art.id} className="flex justify-between items-center bg-stone-700 p-2 rounded">
                                         <span className="text-xs truncate w-24">{art.title}</span>
                                         <div className="flex gap-1">
-                                            <button onClick={() => setEditItem({...art, type:'articles'})} className="text-xs bg-blue-500 px-2 rounded">Edit</button>
-                                            <button onClick={() => handleDeleteArticle(art.id)} className="text-xs bg-red-500 px-2 rounded">Del</button>
+                                            <button onClick={() => setEditItem({...art, type:'articles'})} className="text-xs bg-blue-500 px-2 rounded hover:bg-blue-600 transition-colors">
+                                                <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
+                                            </button>
+                                            <button onClick={() => handleDeleteArticle(art.id)} className="text-xs bg-red-500 px-2 rounded hover:bg-red-600 transition-colors">
+                                                <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                                            </button>
                                         </div>
                                     </div>
                                 ))}
@@ -327,13 +351,27 @@ export default function AdminDashboard({ editItem, setEditItem, user, isAdmin })
             {/* INBOX */}
             {isAdmin && activeTab === 'dashboard' && (
                 <div className="border-t border-stone-700 pt-6 pb-6">
-                    <h3 className="text-xl font-bold text-emerald-400 mb-4">📩 Inbox</h3>
+                    <h3 className="text-xl font-bold text-emerald-400 mb-4 flex items-center gap-2">
+                        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                        Inbox
+                    </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-60 overflow-y-auto pr-2 custom-scrollbar">
                         {messages.length === 0 ? <p className="text-stone-500">No new messages.</p> : messages.map(msg => (
-                            <div key={msg.id} className="bg-stone-800 p-3 rounded-lg border border-stone-600 flex flex-col gap-2">
-                                <div className="flex justify-between"><span className="font-bold text-emerald-400 text-sm">{msg.name}</span><button onClick={() => handleDeleteMessage(msg.id)} className="text-red-500">🗑️</button></div>
+                            <div key={msg.id} className="bg-stone-800 p-3 rounded-lg border border-stone-600 flex flex-col gap-2 hover:bg-stone-700 transition-colors">
+                                <div className="flex justify-between items-center">
+                                    <span className="font-bold text-emerald-400 text-sm flex items-center gap-1">
+                                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+                                        {msg.name}
+                                    </span>
+                                    <button onClick={() => handleDeleteMessage(msg.id)} className="text-red-500 hover:text-red-400">
+                                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                                    </button>
+                                </div>
                                 <p className="text-xs text-stone-300">{msg.message}</p>
-                                <a href={`mailto:${msg.email}`} className="text-xs text-blue-400 hover:underline">Reply via Email</a>
+                                <a href={`mailto:${msg.email}`} className="text-xs text-blue-400 hover:underline flex items-center gap-1">
+                                    <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                                    Reply via Email
+                                </a>
                             </div>
                         ))}
                     </div>

@@ -68,12 +68,25 @@ export default function ChatWidget({ isOpen, setIsOpen }) {
                         <img src="https://media.licdn.com/dms/image/v2/D4E03AQFdRsgOourY5A/profile-displayphoto-scale_200_200/B4EZqEAUJCJ0Ac-/0/1763151268578?e=1766620800&v=beta&t=YOS3Rs0HxNnuPx3hTa2zkHuHYl7Cf6iLS6WxFU-JD7s" alt="PK" className="w-8 h-8 rounded-full border border-stone-600" />
                         <span className={`absolute bottom-0 right-0 w-2.5 h-2.5 border-2 border-stone-900 rounded-full ${adminOnline ? 'bg-green-500 animate-pulse' : 'bg-gray-500'}`}></span>
                     </div>
-                    <div><h4 class="text-white font-bold text-sm">Pethum Kashmira</h4><p class="text-[10px] text-stone-400">{adminOnline ? 'Online Now' : 'Away'}</p></div>
+                    <div><h4 className="text-white font-bold text-sm">Pethum Kashmira</h4><p className="text-[10px] text-stone-400">{adminOnline ? 'Online Now' : 'Away'}</p></div>
                 </div>
-                <button onClick={() => setIsOpen(false)} className="text-stone-400 hover:text-white">X</button>
+                {/* Close Button (SVG) */}
+                <button onClick={() => setIsOpen(false)} className="text-stone-400 hover:text-white transition-colors hover:rotate-90 duration-300">
+                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
             </div>
             <div className="flex-1 overflow-y-auto p-4 bg-stone-50 dark:bg-stone-900 space-y-3">
-                {messages.length === 0 && <p className="text-center text-xs text-stone-400 mt-10">Hi! 👋 How can I help you today?</p>}
+                {messages.length === 0 && (
+                    <div className="text-center text-xs text-stone-400 mt-10 flex flex-col items-center gap-2">
+                         {/* Waving Hand SVG */}
+                         <svg className="w-8 h-8 text-amber-400 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                         </svg>
+                         Hi! How can I help you today?
+                    </div>
+                )}
                 {messages.map((m, i) => (
                     <div key={i} className={`flex ${m.sender === 'guest' ? 'justify-end' : 'justify-start'}`}>
                         <div className={`max-w-[80%] p-2 rounded-lg text-sm ${m.sender === 'guest' ? 'bg-emerald-600 text-white rounded-br-none' : 'bg-stone-200 dark:bg-stone-700 dark:text-white rounded-bl-none'}`}>{m.text}</div>
@@ -84,15 +97,32 @@ export default function ChatWidget({ isOpen, setIsOpen }) {
             <div className="p-3 bg-white dark:bg-stone-800 border-t border-stone-200 dark:border-stone-700">
                 <form onSubmit={handleSend} className="flex gap-2">
                     <input value={msg} onChange={(e) => setMsg(e.target.value)} placeholder="Type a message..." className="flex-1 px-3 py-2 text-sm border border-stone-300 dark:border-stone-600 dark:bg-stone-900 dark:text-white rounded-full focus:outline-none focus:border-emerald-500"/>
-                    <button type="submit" className="p-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700 transition-transform active:scale-95">✈️</button>
+                    
+                    {/* Send Button (SVG) */}
+                    <button type="submit" className="p-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700 transition-all active:scale-95 group">
+                        <svg className="w-5 h-5 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                        </svg>
+                    </button>
                 </form>
             </div>
         </div>
       )}
 
+      {/* Floating Action Button (SVG Toggle) */}
       <button onClick={() => setIsOpen(!isOpen)} className="group bg-stone-900 hover:bg-emerald-600 text-white p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 flex items-center justify-center relative">
         <span className={`absolute -top-1 -right-1 w-4 h-4 rounded-full ${adminOnline ? 'bg-green-500' : 'bg-red-500'} animate-pulse`}></span>
-        {isOpen ? <span className="font-bold text-xl">X</span> : <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" /></svg>}
+        {isOpen ? (
+            // Close Icon SVG
+            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        ) : (
+            // Chat Icon SVG
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 transform group-hover:rotate-12 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+            </svg>
+        )}
       </button>
     </div>
   );
