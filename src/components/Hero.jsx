@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
+// 👇 onNavigate එක මෙතනට ගත්තා
 export default function Hero({ visitorCount, onNavigate }) {
   const cardRef = useRef(null);
   const [typingText, setTypingText] = useState('');
@@ -79,11 +80,13 @@ export default function Hero({ visitorCount, onNavigate }) {
             </p>
             
             <div className="flex flex-wrap gap-4 pt-2">
-                <a href="https://www.linkedin.com/in/pethum-kashmira/" target="_blank" rel="noreferrer" className="group px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg shadow-sm transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
+                
+                {/* 1. LinkedIn Profile */}
+                <a href="https://www.linkedin.com/in/pethum-kashmira/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg shadow-sm transition-all transform hover:-translate-y-0.5">
                     LinkedIn Profile
-                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                 </a>
                 
+                {/* 2. Hire Me on Fiverr */}
                 <button 
                     onClick={() => onNavigate('fiverr-gigs')} 
                     className="px-6 py-3 bg-white dark:bg-stone-800 border border-stone-300 dark:border-stone-700 text-stone-700 dark:text-stone-200 font-semibold rounded-lg hover:bg-stone-50 dark:hover:bg-stone-700 transition-colors"
@@ -91,10 +94,15 @@ export default function Hero({ visitorCount, onNavigate }) {
                     Hire Me on Fiverr
                 </button>
 
-                <a href="http://linkedin.com/company/the-mind-spark-media" target="_blank" rel="noreferrer" className="px-6 py-3 bg-stone-800 hover:bg-stone-900 text-white font-semibold rounded-lg shadow-sm transition-all transform hover:-translate-y-0.5 border border-stone-700 flex items-center gap-2">
-                    <span> Mind Spark Media </span>
-                    <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                {/* 3. 🔥 NEW: Download CV Button */}
+                <a 
+                    href="/pethum_kashmira_CV.pdf" 
+                    download="pethum_kashmira_CV.pdf" 
+                    className="px-6 py-3 bg-stone-800 hover:bg-emerald-600 text-white font-semibold rounded-lg shadow-sm transition-all transform hover:-translate-y-0.5 border border-stone-700 flex items-center gap-2 group"
+                >
+                    <span> Download My CV </span>
+                    <svg className="w-5 h-5 group-hover:translate-y-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
                     </svg>
                 </a>
             </div>
@@ -119,7 +127,7 @@ export default function Hero({ visitorCount, onNavigate }) {
                 </div>
                 <div className="px-6 pb-6 relative">
                     <div className="-mt-12 mb-4">
-                        <img src="https://media.licdn.com/dms/image/v2/D4E03AQFdRsgOourY5A/profile-displayphoto-scale_200_200/B4EZqEAUJCJ0Ac-/0/1763151268578?e=1766620800&v=beta&t=YOS3Rs0HxNnuPx3hTa2zkHuHYl7Cf6iLS6WxFU-JD7s" alt="Pethum" className="w-24 h-24 rounded-full border-4 border-white dark:border-stone-800 shadow-md object-cover bg-white" />
+                        <img src="https://media.licdn.com/dms/image/v2/D4E03AQFdRsgOourY5A/profile-displayphoto-scale_200_200/B4EZqEAUJCJ0Ac-/0/1763151268578?e=1766620800&v=beta&t=g9uBL94vYxGGxaorJ7Wu15ZaD8jQvCzAEvZGlR-e5GQ" alt="Pethum" className="w-24 h-24 rounded-full border-4 border-white dark:border-stone-800 shadow-md object-cover bg-white" />
                     </div>
                     <div className="flex justify-between items-start mb-4 border-b border-stone-200 dark:border-stone-700 pb-4">
                         <div>
