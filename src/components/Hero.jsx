@@ -94,10 +94,10 @@ export default function Hero({ visitorCount, onNavigate }) {
                     Hire Me on Fiverr
                 </button>
 
-                {/* 3. 🔥 NEW: Download CV Button */}
+                {/* 3. Download CV Button */}
                 <a 
-                    href="/pethum_kashmira_CV.pdf" 
-                    download="pethum_kashmira_CV.pdf" 
+                    href="/Pethum_Kashmira_CV.pdf" 
+                    download="Pethum_Kashmira_CV.pdf" 
                     className="px-6 py-3 bg-stone-800 hover:bg-emerald-600 text-white font-semibold rounded-lg shadow-sm transition-all transform hover:-translate-y-0.5 border border-stone-700 flex items-center gap-2 group"
                 >
                     <span> Download My CV </span>
@@ -123,11 +123,13 @@ export default function Hero({ visitorCount, onNavigate }) {
         <div className="md:col-span-5 relative">
             <div ref={cardRef} className="glass-panel rounded-2xl shadow-2xl relative z-10 overflow-hidden tilt-card transition-all duration-300">
                 <div className="h-32 w-full bg-stone-200 dark:bg-stone-800">
-                    <img src="https://media.licdn.com/dms/image/v2/D5616AQFAk5ilkB8lZw/profile-displaybackgroundimage-shrink_350_1400/B56ZgozRjVHQAY-/0/1753031221804?e=1766620800&v=beta&t=g9uBL94vYxGGxaorJ7Wu15ZaD8jQvCzAEvZGlR-e5GQ" alt="Cover" className="w-full h-full object-cover" />
+                    {/* 🔥 FIXED: Cover Image Source changed to local asset */}
+                    <img src="/cover.png" alt="Cover" className="w-full h-full object-cover" />
                 </div>
                 <div className="px-6 pb-6 relative">
                     <div className="-mt-12 mb-4">
-                        <img src="https://media.licdn.com/dms/image/v2/D4E03AQFdRsgOourY5A/profile-displayphoto-scale_200_200/B4EZqEAUJCJ0Ac-/0/1763151268578?e=1766620800&v=beta&t=g9uBL94vYxGGxaorJ7Wu15ZaD8jQvCzAEvZGlR-e5GQ" alt="Pethum" className="w-24 h-24 rounded-full border-4 border-white dark:border-stone-800 shadow-md object-cover bg-white" />
+                        {/* 🔥 FIXED: Profile Image Source changed to local asset */}
+                        <img src="/profile.png" alt="Pethum" className="w-24 h-24 rounded-full border-4 border-white dark:border-stone-800 shadow-md object-cover bg-white" />
                     </div>
                     <div className="flex justify-between items-start mb-4 border-b border-stone-200 dark:border-stone-700 pb-4">
                         <div>

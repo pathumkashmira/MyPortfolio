@@ -55,8 +55,9 @@ export default function Navbar({ onNavigate, currentPage, onSecretClick, user })
           {/* --- LOGO --- */}
           <div className="flex items-center gap-3 font-bold text-lg tracking-tight text-stone-900 dark:text-white select-none cursor-pointer group" onClick={() => onNavigate('profile')}>
             <div className="relative">
+                {/* 🔥 FIXED: Navbar Logo Source changed to local asset */}
                 <img 
-                    src="https://media.licdn.com/dms/image/v2/D4E03AQFdRsgOourY5A/profile-displayphoto-scale_200_200/B4EZqEAUJCJ0Ac-/0/1763151268578?e=1766620800&v=beta&t=YOS3Rs0HxNnuPx3hTa2zkHuHYl7Cf6iLS6WxFU-JD7s" 
+                    src="/profile.png" 
                     alt="PK" 
                     className="w-9 h-9 rounded-full border-2 border-stone-300 dark:border-stone-600 group-hover:border-emerald-500 transition-colors duration-300 object-cover"
                 />
@@ -138,7 +139,7 @@ export default function Navbar({ onNavigate, currentPage, onSecretClick, user })
           {/* --- MOBILE MENU BUTTON --- */}
           <div className="md:hidden flex items-center gap-3">
              
-             {/* 🔥 FIXED: Mobile Dark Mode Toggle (Now using SVG instead of Emoji) */}
+             {/* FIXED: Mobile Dark Mode Toggle (Now using SVG instead of Emoji) */}
              <button onClick={toggleDarkMode} className="p-2 rounded-full bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-amber-400 relative overflow-hidden group">
                 <div className="relative w-6 h-6">
                     <svg className={`w-6 h-6 absolute transform transition-all duration-500 ${isDark ? 'rotate-90 opacity-0' : 'rotate-0 opacity-100 text-amber-500'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
