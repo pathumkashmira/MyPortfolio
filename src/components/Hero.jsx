@@ -5,6 +5,9 @@ export default function Hero({ visitorCount, onNavigate }) {
   const cardRef = useRef(null);
   const [typingText, setTypingText] = useState('');
   
+  // 👇 Popup eka open/close karanna state eka
+  const [showCV, setShowCV] = useState(false);
+  
   useEffect(() => {
     const textToType = ["Agri-Business", "Financial Strategy", "Blockchain technology"];
     let typeIdx = 0;
@@ -94,17 +97,17 @@ export default function Hero({ visitorCount, onNavigate }) {
                     Hire Me on Fiverr
                 </button>
 
-                {/* 3. Download CV Button */}
-                <a 
-                    href="/Pethum_Kashmira_CV.pdf" 
-                    download="Pethum_Kashmira_CV.pdf" 
-                    className="px-6 py-3 bg-stone-800 hover:bg-emerald-600 text-white font-semibold rounded-lg shadow-sm transition-all transform hover:-translate-y-0.5 border border-stone-700 flex items-center gap-2 group"
+                {/* 3. 🔥 NEW: View CV Button with Popup functionality */}
+                <button 
+                    onClick={() => setShowCV(true)}
+                    className="px-6 py-3 bg-stone-800 hover:bg-indigo-600 text-white font-semibold rounded-lg shadow-sm transition-all transform hover:-translate-y-0.5 border border-stone-700 flex items-center gap-2 group cursor-pointer"
                 >
-                    <span> Download My CV </span>
-                    <svg className="w-5 h-5 group-hover:translate-y-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                    <span> View My CV </span>
+                    <svg className="w-5 h-5 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
                     </svg>
-                </a>
+                </button>
             </div>
 
             <div className="mt-6 flex items-center gap-3">
@@ -123,12 +126,11 @@ export default function Hero({ visitorCount, onNavigate }) {
         <div className="md:col-span-5 relative">
             <div ref={cardRef} className="glass-panel rounded-2xl shadow-2xl relative z-10 overflow-hidden tilt-card transition-all duration-300">
                 <div className="h-32 w-full bg-stone-200 dark:bg-stone-800">
-                    {/* 🔥 FIXED: Cover Image Source changed to local asset */}
+                    {/* Fixed Cover Image */}
                     <img src="/cover.png" alt="Cover" className="w-full h-full object-cover" />
                 </div>
                 <div className="px-6 pb-6 relative">
                     <div className="-mt-12 mb-4">
-                        {/* 🔥 FIXED: Profile Image Source changed to local asset */}
                         <img src="/profile.png" alt="Pethum" className="w-24 h-24 rounded-full border-4 border-white dark:border-stone-800 shadow-md object-cover bg-white" />
                     </div>
                     <div className="flex justify-between items-start mb-4 border-b border-stone-200 dark:border-stone-700 pb-4">
@@ -173,6 +175,48 @@ export default function Hero({ visitorCount, onNavigate }) {
                 </div>
             </div>
         </div>
+
+      {/* 👇 CV Modal Popup */}
+      {showCV && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 backdrop-blur-sm p-4 animate-in fade-in duration-200"
+          onClick={() => setShowCV(false)} // Background eka click kalahama close wenna
+        >
+          <div 
+            className="relative w-full max-w-5xl h-[85vh] bg-white dark:bg-stone-900 rounded-xl shadow-2xl overflow-hidden flex flex-col"
+            onClick={(e) => e.stopPropagation()} // Content eka click kalahama close nowenna
+          >
+            {/* Modal Header */}
+            <div className="flex justify-between items-center p-4 border-b border-stone-200 dark:border-stone-700 bg-stone-50 dark:bg-stone-800">
+              <h3 className="text-lg font-bold text-stone-800 dark:text-white">Pethum Kashmira - CV</h3>
+              <button 
+                onClick={() => setShowCV(false)}
+                className="p-2 hover:bg-red-100 dark:hover:bg-red-900/30 rounded-full text-stone-500 hover:text-red-600 transition-colors"
+              >
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Modal Content (Iframe) */}
+<div className="flex-1 bg-stone-100 dark:bg-stone-950 p-0">
+  <iframe 
+    src="/Pethum_Kashmira_CV.html"  // 👈 Methana HTML file eke nama danna
+    className="w-full h-full border-none" 
+    title="CV Preview"
+  ></iframe>
+</div>
+
+            {/* Mobile Footer Link (Backup) */}
+            <div className="p-3 bg-stone-50 dark:bg-stone-800 border-t border-stone-200 dark:border-stone-700 text-center md:hidden">
+                <a href="/cv.pdf" download className="text-emerald-600 font-semibold text-sm">
+                    Download PDF
+                </a>
+            </div>
+          </div>
+        </div>
+      )}
 
       </div>
     </section>
