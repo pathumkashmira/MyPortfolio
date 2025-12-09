@@ -4,7 +4,7 @@ export default function Navbar({ onNavigate, currentPage, onSecretClick, user })
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
 
-  // Dark Mode Logic
+  // --- Dark Mode Logic (Original) ---
   useEffect(() => {
     if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       setIsDark(true);
@@ -27,6 +27,18 @@ export default function Navbar({ onNavigate, currentPage, onSecretClick, user })
     }
   };
 
+  // 🔥 FIX: සයිට් එක ක්‍රෑෂ් වෙන එක නවත්වන ෆන්ක්ෂන් එක
+  const getSafeName = () => {
+    try {
+      if (!user) return "User";
+      if (user.displayName) return user.displayName;
+      if (user.email) return user.email.split('@')[0]; // මෙතන තමයි කලින් කැඩුනේ
+      return "User";
+    } catch (e) {
+      return "User";
+    }
+  };
+
   const navItems = [
     { id: 'profile', label: 'Profile' },
     { id: 'expertise', label: 'Expertise' },
@@ -36,7 +48,7 @@ export default function Navbar({ onNavigate, currentPage, onSecretClick, user })
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-stone-50/80 dark:bg-dark-bg/80 border-b border-stone-200 dark:border-dark-border backdrop-blur-md transition-colors duration-300">
+    <nav className="sticky top-0 z-50 bg-stone-50/80 dark:bg-stone-900/80 border-b border-stone-200 dark:border-stone-800 backdrop-blur-md transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center h-16">
           
@@ -71,7 +83,7 @@ export default function Navbar({ onNavigate, currentPage, onSecretClick, user })
                 NFTs 🚀
             </button>
 
-            {/* 🔥 LOGIN / USER BUTTON */}
+            {/* 🔥 LOGIN / USER BUTTON (FIXED) */}
             <button 
                 onClick={() => { if(onSecretClick) onSecretClick(); }} 
                 className={`ml-2 px-4 py-2 rounded-full font-bold text-xs flex items-center gap-2 transition-colors border ${user ? 'bg-emerald-100 text-emerald-800 border-emerald-300' : 'border-stone-300 hover:bg-stone-200 dark:border-stone-600 dark:hover:bg-stone-700'}`}
@@ -79,7 +91,7 @@ export default function Navbar({ onNavigate, currentPage, onSecretClick, user })
                 {user ? (
                     <>
                         <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                        {user.displayName || user.email.split('@')[0]}
+                        {getSafeName()} {/* මෙන්න මෙතන තමයි අපි අර Safe Function එක දැම්මේ */}
                     </>
                 ) : (
                     <>👤 Login</>
@@ -107,7 +119,7 @@ export default function Navbar({ onNavigate, currentPage, onSecretClick, user })
 
         {/* --- MOBILE MENU DROPDOWN --- */}
         {isMobileMenuOpen && (
-          <div className="md:hidden pb-4 glass-panel mt-2 rounded-xl">
+          <div className="md:hidden pb-4 glass-panel mt-2 rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 shadow-xl">
              <div className="flex flex-col space-y-2 p-2">
                 {navItems.map((item) => (
                   <button 
@@ -124,12 +136,12 @@ export default function Navbar({ onNavigate, currentPage, onSecretClick, user })
                 <button onClick={() => { onNavigate('fiverr-gigs'); setIsMobileMenuOpen(false); }} className="text-left px-3 py-2 text-emerald-600 font-bold hover:bg-emerald-50 dark:hover:bg-stone-800 rounded-md">Services</button>
                 <button onClick={() => { onNavigate('nft-drop'); setIsMobileMenuOpen(false); }} className="text-left px-3 py-2 text-stone-800 dark:text-stone-200 font-bold hover:bg-stone-100 dark:hover:bg-stone-800 rounded-md">NFTs Collection 🚀</button>
                 
-                {/* Mobile Login Button */}
+                {/* Mobile Login Button (FIXED) */}
                 <button 
                     onClick={() => { if(onSecretClick) onSecretClick(); setIsMobileMenuOpen(false); }} 
                     className="text-left px-3 py-2 text-stone-800 dark:text-white font-bold bg-stone-100 dark:bg-stone-700 rounded-md flex items-center gap-2"
                 >
-                    {user ? `👤 Hi, ${user.displayName || 'User'}` : '👤 Login / Join'}
+                    {user ? `👤 Hi, ${getSafeName()}` : '👤 Login / Join'}
                 </button>
              </div>
           </div>
