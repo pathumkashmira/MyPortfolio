@@ -62,7 +62,7 @@ export default function Expertise() {
 
   return (
     <div id="page-expertise" className="page-section">
-      <section>
+      <section className="max-w-6xl mx-auto pt-10 px-4">
         <div className="text-center mb-10 reveal">
           <h2 className="text-3xl font-bold text-stone-900 dark:text-white">Multidisciplinary Focus</h2>
           <p className="text-stone-500 dark:text-stone-400 mt-2">A visual overview of my core areas of expertise.</p>
@@ -73,7 +73,7 @@ export default function Expertise() {
           {expertiseCards.map((card, index) => (
             <div 
               key={index} 
-              className="reveal expertise-card bg-white dark:bg-dark-card rounded-xl overflow-hidden shadow-sm border border-stone-200 dark:border-dark-border transition-all"
+              className="reveal expertise-card bg-white dark:bg-dark-card rounded-xl overflow-hidden shadow-sm border border-stone-200 dark:border-dark-border transition-all hover:shadow-lg hover:-translate-y-1"
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               <div className="h-36 w-full bg-stone-100 overflow-hidden relative group">
@@ -81,7 +81,7 @@ export default function Expertise() {
               </div>
               <div className="p-5">
                 <h3 className="font-bold text-md text-stone-900 dark:text-white mb-1">{card.title}</h3>
-                <p className="text-xs text-stone-600 dark:text-stone-400">{card.desc}</p>
+                <p className="text-xs text-stone-600 dark:text-stone-400 leading-relaxed">{card.desc}</p>
               </div>
             </div>
           ))}
@@ -96,27 +96,6 @@ export default function Expertise() {
                 {skill.name}
               </span>
             ))}
-          </div>
-        </div>
-
-        {/* GitHub Stats */}
-        <div className="reveal mt-8 bg-stone-900 rounded-2xl p-6 md:p-10 border border-stone-800 shadow-xl text-center overflow-hidden relative">
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"></div>
-          <h3 className="text-xl font-bold text-white mb-8 flex items-center justify-center gap-3">
-             Open Source Contributions
-          </h3>
-          <div className="flex flex-col items-center gap-8">
-            <div className="w-full max-w-3xl overflow-x-auto">
-                <img src="https://github-readme-activity-graph.vercel.app/graph?username=pathumkashmira&theme=radical&hide_border=true&area=true&bg_color=1c1917" className="w-full min-w-[600px] rounded-lg shadow-lg" alt="Activity Graph" />
-            </div>
-            <div className="flex flex-wrap justify-center gap-6 w-full">
-                <div className="w-full md:w-auto">
-                    <img src="https://streak-stats.demolab.com?user=pathumkashmira&theme=radical&hide_border=true&background=1c1917" className="h-40 rounded-lg shadow-lg mx-auto" alt="Streak" />
-                </div>
-                <div className="w-full md:flex-1 overflow-x-auto flex items-center justify-center bg-[#1c1917] rounded-lg p-2 shadow-lg h-40">
-                    <img src="https://github-profile-trophy.vercel.app/?username=pathumkashmira&theme=radical&no-frame=true&margin-w=10&margin-h=10" className="h-full" alt="Trophies" />
-                </div>
-            </div>
           </div>
         </div>
 
