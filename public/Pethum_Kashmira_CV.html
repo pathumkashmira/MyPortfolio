@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pethum Kashmira - Professional Resume</title>
-    <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     
     <style>
         :root {
@@ -13,7 +13,6 @@
             --primary-dark: #059669;  /* Emerald 600 */
         }
         body {
-            /* Monospace Font Stack for technical look */
             font-family: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
             background-color: #f3f4f6;
         }
@@ -36,154 +35,102 @@
             }
         }
 
-        /* --- PRINT STYLES FOR A4 LAYOUT FIX --- */
+        /* --- PRINT STYLES --- */
         @media print {
-            body {
-                background-color: #fff !important; /* Force white background */
-                font-size: 10pt; /* Smaller font for professionalism on paper */
-                margin: 0;
-                padding: 0;
-            }
-            .cv-container {
-                max-width: none !important;
-                box-shadow: none !important;
-                border-radius: 0 !important;
-                padding: 0.5in !important; /* Standard print margin */
-            }
-            /* Force the two-column layout for print (1/3 and 2/3 ratio) */
-            .grid-cols-3 {
-                display: grid;
-                grid-template-columns: 1fr 2fr;
-                gap: 20px;
-            }
-            .col-span-1, .col-span-2 {
-                width: auto !important;
-                margin: 0 !important;
-                padding: 0 10px;
-            }
-            /* Remove sidebar background and shadow on print */
-            .bg-gray-50 {
-                background-color: transparent !important;
-                box-shadow: none !important;
-                padding: 0 !important;
-            }
-            /* Ensure clean vertical dividers/borders */
-            .section-title {
-                border-bottom: 1px solid var(--primary-color) !important;
-            }
-            .experience-card {
-                border-left: 1px solid var(--primary-color) !important;
-            }
+            .print-hidden { display: none !important; } /* Hide download button when printing */
+            body { background-color: #fff !important; font-size: 10pt; margin: 0; padding: 0; }
+            .cv-container { max-width: none !important; box-shadow: none !important; padding: 0.5in !important; }
+            .lg\:grid-cols-3 { display: grid; grid-template-columns: 1fr 2fr; gap: 20px; }
+            .lg\:col-span-1, .lg\:col-span-2 { width: auto !important; margin: 0 !important; }
+            .bg-gray-50 { background-color: transparent !important; box-shadow: none !important; padding: 0 !important; }
+            .section-title { border-bottom: 1px solid var(--primary-color) !important; }
+            .experience-card { border-left: 1px solid var(--primary-color) !important; }
         }
-        /* --- END PRINT STYLES --- */
     </style>
 </head>
-<body class="p-4 lg:p-8">
+<body class="p-4 lg:p-8 relative">
 
-    <div class="cv-container bg-white shadow-xl rounded-xl mx-auto p-6 md:p-10">
+    <a 
+        href="/cv.pdf" 
+        download="cv.pdf" 
+        class="print-hidden fixed top-6 left-6 z-50 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-6 rounded-full shadow-2xl flex items-center gap-3 transition-all transform hover:scale-105 hover:translate-y-1 border-2 border-white"
+        title="Download PDF Version"
+    >
+        <i class="fas fa-file-download text-lg"></i>
+        <span>Download PDF</span>
+    </a>
 
-        <!-- HEADER SECTION -->
-        <header class="text-center pb-6 border-b-4 border-gray-200 mb-6">
+    <div class="cv-container bg-white shadow-xl rounded-xl mx-auto p-6 md:p-10 mt-16 lg:mt-0"> <header class="text-center pb-6 border-b-4 border-gray-200 mb-6">
             <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight">PETHUM KASHMIRA</h1>
-            <h2 class="text-xl md:text-2xl font-semibold primary-text mt-2">Agri-Business | Finance | Digital Design | Web3</h2>
+            <h2 class="text-xl md:text-2xl font-semibold primary-text mt-2">Agri-Business Management Undergraduate | Chartered Accountancy Business Level Readeing </h2>
             
-            <!-- CONTACT BAR -->
             <div class="flex flex-wrap justify-center text-sm text-gray-600 mt-4 gap-x-4 gap-y-2">
-                <span class="flex items-center">
-                    <i class="fas fa-map-marker-alt primary-text mr-1"></i> Medirigiriya, Sri Lanka
-                </span>
-                <span class="flex items-center">
-                    <i class="fas fa-phone primary-text mr-1"></i> +94 76 966 7684
-                </span>
-                <span class="flex items-center">
-                    <i class="fas fa-envelope primary-text mr-1"></i> <a href="mailto:kpathumkashmira@gmail.com" class="hover:underline">kpathumkashmira@gmail.com</a>
-                </span>
+                <span class="flex items-center"><i class="fas fa-map-marker-alt primary-text mr-1"></i> Medirigiriya, Sri Lanka</span>
+                <span class="flex items-center"><i class="fas fa-phone primary-text mr-1"></i> +94 76 966 7684</span>
+                <span class="flex items-center"><i class="fas fa-envelope primary-text mr-1"></i> <a href="mailto:kpathumkashmira@gmail.com" class="hover:underline">pethumkashmira@gmail.com</a></span>
             </div>
-            <!-- SOCIAL BAR -->
             <div class="flex flex-wrap justify-center text-sm text-gray-600 mt-2 gap-x-4 gap-y-2">
-                <span class="flex items-center">
-                    <i class="fas fa-globe primary-text mr-1"></i> <a href="https://pethumkashmira.site" target="_blank" class="hover:underline">pethumkashmira.site</a>
-                </span>
-                <span class="flex items-center">
-                    <i class="fab fa-linkedin primary-text mr-1"></i> <a href="https://linkedin.com/in/pethum-kashmira" target="_blank" class="hover:underline">/in/pethum-kashmira</a>
-                </span>
-                <span class="flex items-center">
-                    <i class="fab fa-github primary-text mr-1"></i> <a href="https://github.com/pathumkashmira" target="_blank" class="hover:underline">/github/pathumkashmira</a>
-                </span>
+                <span class="flex items-center"><i class="fas fa-globe primary-text mr-1"></i> <a href="https://pethumkashmira.site" target="_blank" class="hover:underline">pethumkashmira.site</a></span>
+                <span class="flex items-center"><i class="fab fa-linkedin primary-text mr-1"></i> <a href="https://linkedin.com/in/pethum-kashmira" target="_blank" class="hover:underline">/in/pethum-kashmira</a></span>
+                <span class="flex items-center"><i class="fab fa-github primary-text mr-1"></i> <a href="https://github.com/pathumkashmira" target="_blank" class="hover:underline">/github/pathumkashmira</a></span>
             </div>
         </header>
 
-        <!-- SUMMARY -->
         <section class="mb-8">
             <h3 class="section-title text-xl font-bold text-gray-800 uppercase">Professional Summary</h3>
-            <p class="text-gray-700 leading-relaxed">
-                Driven undergraduate specializing in <strong class="primary-text">Agri Business Management</strong> and <strong class="primary-text">CA Sri Lanka</strong> student. I bridge the gap between traditional industries and digital innovation, combining financial strategy, agricultural economics, and creative design to build sustainable solutions. Passionate about decentralized finance (DeFi), NFTs, and Web3, which I leverage for side income and entrepreneurial exploration.
+            <p class="text-gray-700 leading-relaxed text-sm">
+                I am Pethum Kashmira, an ambitious undergraduate at the <strong class="primary-text">Faculty of Agriculture, University of Ruhuna</strong>, pursuing a B.Sc. (Hons) in Agri Business Management. Concurrently, I am strengthening my financial knowledge through enrollment at the <strong class="primary-text">Institute of Chartered Accountants of Sri Lanka</strong>. I bridge traditional business acumen with modern digital trends, actively exploring emerging trends like <strong class="primary-text">cryptocurrency, NFTs, and airdrops</strong> which I leverage for side income and entrepreneurial exploration. I work as a freelance designer on Fiverr, providing creative services such as CV/resume design and branding materials.
             </p>
         </section>
 
-        <!-- MAIN CONTENT: GRID LAYOUT FOR SECTIONS -->
-        <div class="grid grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             
-            <!-- LEFT COLUMN (SKILLS, EDUCATION, CERTIFICATIONS, INTERESTS) -->
-            <div class="col-span-1">
-
-                <!-- SKILLS (Includes Soft Skills) -->
+            <div class="lg:col-span-1">
                 <section class="mb-8 p-4 bg-gray-50 rounded-lg shadow-inner">
                     <h3 class="section-title text-xl font-bold text-gray-800 uppercase">Skills & Competencies</h3>
-                    
                     <div class="mb-4">
-                        <p class="font-semibold primary-text text-lg mb-1">Technical Tools</p>
-                        <p class="text-gray-700 text-sm">React.js, Firebase, Tailwind CSS, Adobe Ps/Ai/Figma, MS Excel, PowerBI, <strong class="font-bold">Blockchain Tech & Node Ops</strong>, CorelDRAW.</p>
+                        <p class="font-semibold primary-text text-sm mb-1">Technical & Finance</p>
+                        <p class="text-gray-700 text-sm"><strong class="font-bold">Financial Reporting</strong>, <strong class="font-bold">Income Tax, Business Law</strong>, Web Design, MS Office Package /Ai/Figma, MS Excel, PowerBI, <strong class="font-bold">Blockchain Technology, NFTs & Node Ops</strong>.</p>
                     </div>
-
                     <div class="mb-4">
-                        <p class="font-semibold primary-text text-lg mb-1">Core Domains</p>
-                        <p class="text-gray-700 text-sm">Agri-Business Mgt., Financial Accounting & Reporting, Auditing, Income Tax, Entrepreneurship.</p>
+                        <p class="font-semibold primary-text text-sm mb-1">Core Domains</p>
+                        <p class="text-gray-700 text-sm">Agri-Business Mgt., Financial Accounting & Auditing, Entrepreneurship, Sustainable Business Practices.</p>
                     </div>
-                    
                     <div>
-                        <p class="font-semibold primary-text text-lg mb-1">Soft Skills</p>
-                        <p class="text-gray-700 text-sm">Transformational Leadership, Strategic Planning, Client Communication, Creative Problem Solving, Time Management.</p>
+                        <p class="font-semibold primary-text text-sm mb-1">Soft Skills</p>
+                        <p class="text-gray-700 text-sm">Transformational Leadership, Strategic Planning, Client Communication,Adaptability, Creative Problem Solving, Time Management.</p>
                     </div>
                 </section>
 
-                <!-- SCHOOL EDUCATION (Exam Results) -->
                 <section class="mb-8">
                     <h3 class="section-title text-xl font-bold text-gray-800 uppercase">School Education</h3>
-                    
-                    <!-- A/L Results -->
-                    <p class="font-semibold text-gray-800">G.C.E. Advanced Level (20xx)</p>
-                    <p class="italic primary-text text-sm">Medirigiriya National School</p>
-                    <p class="text-gray-600 text-sm">Stream: Bio / Commerce</p>
-                    <!-- Simplified results display -->
-                    <div class="grid grid-cols-2 gap-x-4 gap-y-1 mt-2 text-sm text-gray-700">
-                        <span>Subject 1: <strong class="font-bold">A</strong></span>
-                        <span>Subject 2: <strong class="font-bold">B</strong></span>
-                        <span>Subject 3: <strong class="font-bold">B</strong></span>
-                        <span>Gen. English: <strong class="font-bold">A</strong></span>
-                    </div>
+                    <p class="font-semibold text-gray-800 text-sm">G.C.E. Advanced Level (2023)</p>
+                    <p class="italic primary-text text-xs mb-1">Medirigiriya National School</p>
+                    <p class="text-gray-600 text-xs">Stream: Biology</p>
+                    <div class="grid grid-cols-1 gap-x-4 gap-y-1 mt-1 text-xs text-gray-700">
+                        <span>Biology: <strong class="font-bold">S</strong></span>
+                        <span>Chemistry: <strong class="font-bold">C</strong></span>
+                        <span>Physics: <strong class="font-bold">C</strong></span>
 
-                    <!-- O/L Results -->
-                    <div class="mt-6">
-                        <p class="font-semibold text-gray-800">G.C.E. Ordinary Level (20xx)</p>
-                        <p class="italic primary-text text-sm">Medirigiriya National School</p>
-                        <p class="text-gray-600 text-sm mb-2">Achieved <strong class="font-bold primary-text">9 Distinctions (A Passes)</strong></p>
-                        <!-- Detailed O/L results display (9 A passes) -->
-                        <div class="grid grid-cols-2 gap-x-4 gap-y-1 text-sm text-gray-700">
+                    </div>
+                    <div class="mt-4">
+                        <p class="font-semibold text-gray-800 text-sm">G.C.E. Ordinary Level (2020)</p>
+                        <p class="italic primary-text text-xs mb-1">Medirigiriya National School</p>
+                        <p class="text-gray-600 text-xs mb-1">Achieved <strong class="font-bold primary-text">8 Distinctions (A Passes)</strong></p>
+                        <div class="grid grid-cols-1 gap-x-4 gap-y-1 text-xs text-gray-700">
                             <span>Mathematics: <strong class="font-bold">A</strong></span>
                             <span>Science: <strong class="font-bold">A</strong></span>
                             <span>Sinhala: <strong class="font-bold">A</strong></span>
-                            <span>English: <strong class="font-bold">A</strong></span>
+                            <span>Religion(Buddhist): <strong class="font-bold">A</strong></span>
                             <span>History: <strong class="font-bold">A</strong></span>
-                            <span>Religion: <strong class="font-bold">A</strong></span>
-                            <span>Commerce: <strong class="font-bold">A</strong></span>
-                            <span>Subject 8: <strong class="font-bold">A</strong></span>
-                            <span>Subject 9: <strong class="font-bold">A</strong></span>
+                            <span>English: <strong class="font-bold">C</strong></span>
+                            <span>Civic Education: <strong class="font-bold">A</strong></span>
+                            <span>Agriculture: <strong class="font-bold">A</strong></span>
+                            <span>Music : <strong class="font-bold">A</strong></span>
                         </div>
                     </div>
                 </section>
 
-                <!-- CERTIFICATIONS -->
                 <section class="mb-8">
                     <h3 class="section-title text-xl font-bold text-gray-800 uppercase">Certifications</h3>
                     <ul class="text-gray-700 space-y-1 text-sm list-disc pl-5">
@@ -194,34 +141,29 @@
                     </ul>
                 </section>
 
-                <!-- INTERESTED IN (NEW SECTION) -->
-                <section class="mb-8">
-                    <h3 class="section-title text-xl font-bold text-gray-800 uppercase">Interested In</h3>
-                    <ul class="text-gray-700 space-y-1 text-sm list-disc pl-5">
-                        <li>Agribusiness & Agri-Economics</li>
-                        <li>Decentralized Finance (DeFi) & Blockchain</li>
-                        <li>Sustainable Supply Chain Strategies</li>
-                        <li>Creative Design & Web Development</li>
-                        <li>Entrepreneurship & Startups</li>
-                    </ul>
-                </section>
-                
-                <!-- LANGUAGES -->
                 <section class="mb-8">
                     <h3 class="section-title text-xl font-bold text-gray-800 uppercase">Languages</h3>
                     <p class="text-gray-700"><strong class="primary-text">Sinhala:</strong> Native</p>
                     <p class="text-gray-700"><strong class="primary-text">English:</strong> Professional Working</p>
                 </section>
 
+                <section class="mb-4">
+                    <h3 class="section-title text-xl font-bold text-gray-800 uppercase">Referees</h3>
+                    <div class="grid grid-cols-2 gap-4 text-sm text-gray-700">
+                        <div><p class="font-bold text-gray-800">Mr.Rasika Chaturanga </p><p>PRINCIPAL
+</p><p>Medirigiriya National School</p><p>Tel: + 94 27 224 8220</p></div>
+                        <!-- <div><p class="font-bold text-gray-800">Name 2</p><p>Senior Lecturer</p><p>University of Ruhuna</p><p>Tel: +94 7x xxx xxxx</p></div> -->
+                    </div>
+                </section>
+
             </div>
 
-            <!-- RIGHT COLUMN (HIGHER EDUCATION & EXTRA CURRICULAR) -->
-            <div class="col-span-2">
-                
-                <!-- HIGHER EDUCATION -->
+
+
+
+            <div class="lg:col-span-2">
                 <section class="mb-8">
                     <h3 class="section-title text-xl font-bold text-gray-800 uppercase">Higher Education</h3>
-                    
                     <div class="mb-4">
                         <div class="flex justify-between items-start">
                             <p class="font-semibold text-gray-800">BSc (Hons) in Agri Business Management</p>
@@ -229,28 +171,22 @@
                         </div>
                         <p class="italic text-gray-600 text-sm">University of Ruhuna, Sri Lanka</p>
                         <ul class="text-gray-700 text-sm list-disc pl-5 mt-1 space-y-0.5">
-                            <li>Focusing on sustainable supply chain strategies and farm economics.</li>
-                            <li>Researching modern technology integration with traditional farming.</li>
+                            <li>Focusing on sustainable supply chain strategies and technology integration.</li>
                         </ul>
                     </div>
-
                     <div class="mb-4">
                         <div class="flex justify-between items-start">
-                            <p class="font-semibold text-gray-800">Certified Corporate Accountant (Student)</p>
+                            <p class="font-semibold text-gray-800">Chartered Accountancy (Business Level Reading)</p>
                             <p class="italic primary-text text-sm font-medium">July 2025 -- Present</p>
                         </div>
                         <p class="italic text-gray-600 text-sm">Institute of Chartered Accountants of Sri Lanka</p>
-                        <!-- CA Results Table (Simplified Styling) -->
                         <div class="mt-2 text-sm border border-gray-300 rounded-md overflow-hidden">
-                            <div class="grid grid-cols-2 bg-emerald-50 font-bold p-2">
-                                <span>Subject</span>
-                                <span class="text-right">Result</span>
-                            </div>
+                            <div class="grid grid-cols-2 bg-emerald-50 font-bold p-2"><span>Subject</span><span class="text-right">Status</span></div>
                             <div class="divide-y divide-gray-200">
                                 <div class="grid grid-cols-2 p-2"><span>Financial Accounting</span><span class="text-right font-bold">Pass</span></div>
-                                <div class="grid grid-cols-2 p-2"><span>Business Mathematics</span><span class="text-right font-bold">Pass</span></div>
                                 <div class="grid grid-cols-2 p-2"><span>Business Law</span><span class="text-right font-bold">Pass</span></div>
-                                <div class="grid grid-cols-2 p-2"><span>Audit \& Assurance</span><span class="text-right font-bold primary-text">Reading</span></div>
+                                <div class="grid grid-cols-2 p-2"><span>Business Mathematics & Statistics</span><span class="text-right font-bold">Pass</span></div>
+                                <div class="grid grid-cols-2 p-2"><span>Audit, Business Processes & Digitalisation</span><span class="text-right font-bold primary-text">Reading</span></div>
                             </div>
                         </div>
                     </div>
@@ -261,7 +197,7 @@
                     <h3 class="section-title text-xl font-bold text-gray-800 uppercase">Extra Curricular Activities & Ventures</h3>
                     
                     <!-- 1. Web3 Trading & Node Ops (from old WEB3 section) -->
-                    <p class="font-semibold text-gray-800 mt-4 mb-2">Web3 Trading & Node Operations</p>
+                    <p class="font-semibold text-gray-800 mt-4 mb-2">Trading, Web3 & Node Operations</p>
                     
                     <!-- Movement Labs -->
                     <div class="experience-card">
@@ -299,23 +235,42 @@
                         </ul>
                     </div>
                     
-                    <!-- 2. Design & Freelancing (from old DESIGN section) -->
+                    <!-- 2. Foreign currency Trader   -->
+                     <p class="font-semibold text-gray-800 mt-4 mb-2">Foreign Currency Trading
+</p>
+                <!-- Movement Labs -->
+                    <div class="experience-card">
+                        <div class="flex justify-between items-start">
+                            <p class="font-semibold text-gray-800">Forex Trader - <span class="italic text-gray-600">Exness</span></p>
+                            <p class="italic primary-text text-sm font-medium">Feb 2022 - Nov 2023</p>
+                        </div>
+                        <ul class="text-gray-700 text-sm list-disc pl-5 mt-1 space-y-0.5">
+                            <li> Executed trades on Exness platform, specializing in currency pairs like goldUSD, EUR-USD, and USD-JPY
+                            <li>Conducted in-depth chart analysis to inform trading decisions and optimize
+performance
+                            <li>Gained substantial experience in foreign exchange markets, enhancing
+strategic trading skills</li>
+                        </ul>
+                    </div>
+
+
+                    <!-- 3. Design & Freelancing (from old DESIGN section) -->
                     <p class="font-semibold text-gray-800 mt-4 mb-2">Design & Freelancing</p>
                     
                     <!-- Fiverr -->
                     <div class="experience-card">
                         <div class="flex justify-between items-start">
                             <p class="font-semibold text-gray-800">Freelance Graphic Designer (Level 2 Seller) - <span class="italic text-gray-600">Fiverr</span></p>
-                            <p class="italic primary-text text-sm font-medium">June 2020 - June 2023</p>
+                            <p class="italic primary-text text-sm font-medium">June 2020 - June 2022</p>
                         </div>
                         <ul class="text-gray-700 text-sm list-disc pl-5 mt-1 space-y-0.5">
                             <li>Successfully upgraded to **Level 2 Seller** status.</li>
-                            <li>Specialized in graphic design tasks using <strong class="font-bold">Adobe Illustrator and CorelDRAW</strong>.</li>
-                            <li>Managed end-to-end design projects for diverse clients via **The Mind Spark Media**.</li>
+                            <li>Specialized in graphic design tasks using <strong class="font-bold">CorelDRAW</strong>.</li>
+
                         </ul>
                     </div>
 
-                    <!-- 3. Key Projects (from old PROJECTS section) -->
+                    <!-- 4. Key Projects (from old PROJECTS section) -->
                     <p class="font-semibold text-gray-800 mt-4 mb-2">Key Projects</p>
                     
                     <div class="experience-card">
@@ -333,27 +288,17 @@
                         </ul>
                     </div>
                 </section>
-
-                <!-- REFEREES -->
-                <section class="mb-4">
+                
+                <!-- <section class="mb-4">
                     <h3 class="section-title text-xl font-bold text-gray-800 uppercase">Referees</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-700">
-                        <div>
-                            <p class="font-bold text-gray-800">Name 1</p>
-                            <p>Senior Lecturer, University of Ruhuna</p>
-                            <p>Tel: +94 7x xxx xxxx</p>
-                        </div>
-                        <div>
-                            <p class="font-bold text-gray-800">Name 2</p>
-                            <p>Senior Lecturer, University of Ruhuna</p>
-                            <p>Tel: +94 7x xxx xxxx</p>
-                        </div>
+                    <div class="grid grid-cols-2 gap-4 text-sm text-gray-700">
+                        <div><p class="font-bold text-gray-800">Mr.Rasika Chaturanga </p><p>PRINCIPAL
+</p><p>Medirigiriya National School</p><p>Tel: + 94 27 224 8220</p></div>
+                        <-- <div><p class="font-bold text-gray-800">Name 2</p><p>Senior Lecturer</p><p>University of Ruhuna</p><p>Tel: +94 7x xxx xxxx</p></div> -->
                     </div>
-                </section>
-
+                </section> 
             </div>
         </div>
-
     </div>
 </body>
 </html>

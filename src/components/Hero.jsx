@@ -1,12 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-// 👇 onNavigate එක මෙතනට ගත්තා
 export default function Hero({ visitorCount, onNavigate }) {
   const cardRef = useRef(null);
   const [typingText, setTypingText] = useState('');
-  
-  // 👇 Popup eka open/close karanna state eka
-  const [showCV, setShowCV] = useState(false);
+  const [showCV, setShowCV] = useState(false); // Popup State
   
   useEffect(() => {
     const textToType = ["Agri-Business", "Financial Strategy", "Blockchain technology"];
@@ -63,6 +60,7 @@ export default function Hero({ visitorCount, onNavigate }) {
     <section id="profile" className="min-h-[85vh] flex items-center justify-center pt-10">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center w-full">
         
+        {/* Left Side Content */}
         <div className="md:col-span-7 space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100/50 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-200 text-xs font-bold uppercase tracking-wide border border-emerald-200 dark:border-emerald-800">
                 <span className="relative flex h-2 w-2">
@@ -83,13 +81,10 @@ export default function Hero({ visitorCount, onNavigate }) {
             </p>
             
             <div className="flex flex-wrap gap-4 pt-2">
-                
-                {/* 1. LinkedIn Profile */}
                 <a href="https://www.linkedin.com/in/pethum-kashmira/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg shadow-sm transition-all transform hover:-translate-y-0.5">
                     LinkedIn Profile
                 </a>
                 
-                {/* 2. Hire Me on Fiverr */}
                 <button 
                     onClick={() => onNavigate('fiverr-gigs')} 
                     className="px-6 py-3 bg-white dark:bg-stone-800 border border-stone-300 dark:border-stone-700 text-stone-700 dark:text-stone-200 font-semibold rounded-lg hover:bg-stone-50 dark:hover:bg-stone-700 transition-colors"
@@ -97,7 +92,6 @@ export default function Hero({ visitorCount, onNavigate }) {
                     Hire Me on Fiverr
                 </button>
 
-                {/* 3. 🔥 NEW: View CV Button with Popup functionality */}
                 <button 
                     onClick={() => setShowCV(true)}
                     className="px-6 py-3 bg-stone-800 hover:bg-indigo-600 text-white font-semibold rounded-lg shadow-sm transition-all transform hover:-translate-y-0.5 border border-stone-700 flex items-center gap-2 group cursor-pointer"
@@ -123,10 +117,10 @@ export default function Hero({ visitorCount, onNavigate }) {
             </div>
         </div>
 
+        {/* Right Side Content (Image Card) */}
         <div className="md:col-span-5 relative">
             <div ref={cardRef} className="glass-panel rounded-2xl shadow-2xl relative z-10 overflow-hidden tilt-card transition-all duration-300">
                 <div className="h-32 w-full bg-stone-200 dark:bg-stone-800">
-                    {/* Fixed Cover Image */}
                     <img src="/cover.png" alt="Cover" className="w-full h-full object-cover" />
                 </div>
                 <div className="px-6 pb-6 relative">
@@ -176,49 +170,60 @@ export default function Hero({ visitorCount, onNavigate }) {
             </div>
         </div>
 
+      </div>
+
       {/* 👇 CV Modal Popup */}
       {showCV && (
         <div 
           className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 backdrop-blur-sm p-4 animate-in fade-in duration-200"
-          onClick={() => setShowCV(false)} // Background eka click kalahama close wenna
+          onClick={() => setShowCV(false)}
         >
           <div 
             className="relative w-full max-w-5xl h-[85vh] bg-white dark:bg-stone-900 rounded-xl shadow-2xl overflow-hidden flex flex-col"
-            onClick={(e) => e.stopPropagation()} // Content eka click kalahama close nowenna
+            onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
             <div className="flex justify-between items-center p-4 border-b border-stone-200 dark:border-stone-700 bg-stone-50 dark:bg-stone-800">
-              <h3 className="text-lg font-bold text-stone-800 dark:text-white">Pethum Kashmira - CV</h3>
-              <button 
-                onClick={() => setShowCV(false)}
-                className="p-2 hover:bg-red-100 dark:hover:bg-red-900/30 rounded-full text-stone-500 hover:text-red-600 transition-colors"
-              >
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
-
-            {/* Modal Content (Iframe) */}
-<div className="flex-1 bg-stone-100 dark:bg-stone-950 p-0">
-  <iframe 
-    src="/Pethum_Kashmira_CV.html"  // 👈 Methana HTML file eke nama danna
-    className="w-full h-full border-none" 
-    title="CV Preview"
-  ></iframe>
-</div>
-
-            {/* Mobile Footer Link (Backup) */}
-            <div className="p-3 bg-stone-50 dark:bg-stone-800 border-t border-stone-200 dark:border-stone-700 text-center md:hidden">
-                <a href="/cv.pdf" download className="text-emerald-600 font-semibold text-sm">
-                    Download PDF
+              <h3 className="text-lg font-bold text-stone-800 dark:text-white flex items-center gap-2">
+                Pethum Kashmira-CV
+              </h3>
+              
+              <div className="flex items-center gap-3">
+                {/* Download Button */}
+                <a 
+                    href="/cv.pdf" 
+                    download="cv.pdf"
+                    className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold rounded-lg shadow-md flex items-center gap-2 transition-all hover:scale-105"
+                >
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                    <span className="hidden sm:inline">Download</span>
                 </a>
+
+                {/* Close Button */}
+                <button 
+                    onClick={() => setShowCV(false)}
+                    className="p-2 hover:bg-stone-200 dark:hover:bg-stone-700 rounded-full text-stone-500 dark:text-stone-400 transition-colors"
+                >
+                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+              </div>
             </div>
+
+            {/* PDF Viewer */}
+            <div className="flex-1 bg-stone-200 dark:bg-stone-950 relative">
+              <iframe 
+                src="/cv.pdf#toolbar=0"
+                className="w-full h-full border-none" 
+                title="CV Preview"
+              ></iframe>
+            </div>
+
           </div>
         </div>
       )}
 
-      </div>
     </section>
   );
 }
