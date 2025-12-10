@@ -3,7 +3,9 @@ import React, { useEffect, useRef, useState } from 'react';
 export default function Hero({ visitorCount, onNavigate }) {
   const cardRef = useRef(null);
   const [typingText, setTypingText] = useState('');
-  const [showCV, setShowCV] = useState(false); // Popup State
+  
+  // 👇 Popup State
+  const [showCV, setShowCV] = useState(false);
   
   useEffect(() => {
     const textToType = ["Agri-Business", "Financial Strategy", "Blockchain technology"];
@@ -60,7 +62,6 @@ export default function Hero({ visitorCount, onNavigate }) {
     <section id="profile" className="min-h-[85vh] flex items-center justify-center pt-10">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center w-full">
         
-        {/* Left Side Content */}
         <div className="md:col-span-7 space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100/50 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-200 text-xs font-bold uppercase tracking-wide border border-emerald-200 dark:border-emerald-800">
                 <span className="relative flex h-2 w-2">
@@ -81,6 +82,7 @@ export default function Hero({ visitorCount, onNavigate }) {
             </p>
             
             <div className="flex flex-wrap gap-4 pt-2">
+                
                 <a href="https://www.linkedin.com/in/pethum-kashmira/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg shadow-sm transition-all transform hover:-translate-y-0.5">
                     LinkedIn Profile
                 </a>
@@ -117,7 +119,6 @@ export default function Hero({ visitorCount, onNavigate }) {
             </div>
         </div>
 
-        {/* Right Side Content (Image Card) */}
         <div className="md:col-span-5 relative">
             <div ref={cardRef} className="glass-panel rounded-2xl shadow-2xl relative z-10 overflow-hidden tilt-card transition-all duration-300">
                 <div className="h-32 w-full bg-stone-200 dark:bg-stone-800">
@@ -170,29 +171,27 @@ export default function Hero({ visitorCount, onNavigate }) {
             </div>
         </div>
 
-      </div>
-
       {/* 👇 CV Modal Popup */}
       {showCV && (
         <div 
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 backdrop-blur-sm p-4 animate-in fade-in duration-200"
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-in fade-in duration-200"
           onClick={() => setShowCV(false)}
         >
           <div 
-            className="relative w-full max-w-5xl h-[85vh] bg-white dark:bg-stone-900 rounded-xl shadow-2xl overflow-hidden flex flex-col"
+            className="relative w-full max-w-5xl h-[85vh] bg-white dark:bg-stone-900 rounded-xl shadow-2xl overflow-hidden flex flex-col border border-stone-200 dark:border-stone-700"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
             <div className="flex justify-between items-center p-4 border-b border-stone-200 dark:border-stone-700 bg-stone-50 dark:bg-stone-800">
               <h3 className="text-lg font-bold text-stone-800 dark:text-white flex items-center gap-2">
-                Pethum Kashmira-CV
+                Curriculum Vitae
               </h3>
               
               <div className="flex items-center gap-3">
                 {/* Download Button */}
                 <a 
-                    href="/cv.pdf" 
-                    download="cv.pdf"
+                    href="/Pethum_Kashmira_CV.pdf" 
+                    download="Pethum_Kashmira_CV.pdf"
                     className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold rounded-lg shadow-md flex items-center gap-2 transition-all hover:scale-105"
                 >
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
@@ -211,13 +210,39 @@ export default function Hero({ visitorCount, onNavigate }) {
               </div>
             </div>
 
-            {/* PDF Viewer */}
+            {/* Modal Content */}
             <div className="flex-1 bg-stone-200 dark:bg-stone-950 relative">
+              
+              {/* 🔥 Desktop View: Embed PDF */}
               <iframe 
-                src="/cv.pdf#toolbar=0"
-                className="w-full h-full border-none" 
+                src="/Pethum_Kashmira_CV.pdf#toolbar=0"
+                className="hidden md:block w-full h-full border-none" 
                 title="CV Preview"
               ></iframe>
+
+              {/* 🔥 Mobile View: Fallback Message */}
+              <div className="md:hidden w-full h-full flex flex-col items-center justify-center p-6 text-center bg-stone-100 dark:bg-stone-900">
+                <div className="w-16 h-16 bg-stone-300 dark:bg-stone-800 rounded-full flex items-center justify-center mb-4 shadow-inner">
+                    <svg className="w-8 h-8 text-stone-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                </div>
+                <h4 className="text-lg font-bold text-stone-800 dark:text-white mb-2">
+                    PDF Preview Not Available
+                </h4>
+                <p className="text-sm text-stone-500 dark:text-stone-400 mb-6 max-w-xs">
+                    Mobile browsers cannot embed PDF files directly. Please open the file to view.
+                </p>
+                <a 
+                    href="/Pethum_Kashmira_CV.pdf" 
+                    target="_blank"
+                    className="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-lg transition-transform active:scale-95 flex items-center gap-2"
+                >
+                    Open PDF File
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                </a>
+              </div>
+
             </div>
 
           </div>
