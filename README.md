@@ -1,118 +1,118 @@
 <div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=059669&height=250&section=header&text=Portfolio%20v2.0&fontSize=80&fontAlignY=35&animation=fadeIn&fontColor=ffffff" width="100%" />
+  
+  <h1 align="center">🚀 Pethum Kashmira - Professional Portfolio</h1>
 
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=40&duration=3000&pause=1000&color=10B981&center=true&vCenter=true&width=800&lines=Hi,+I'm+Pethum+Kashmira+👋;Agri-Business+Manager+🌱;Web3+%26+Blockchain+Enthusiast+🚀;Full+Stack+Developer+💻" alt="Typing SVG" />
-
-  <br/>
-
-  <p>
-    <a href="https://www.linkedin.com/in/pethum-kashmira/">
-      <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
-    </a>
-    <a href="mailto:pethumkashmira@gmail.com">
-      <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
-    </a>
-    <a href="https://pethumkashmira.site">
-      <img src="https://img.shields.io/badge/Portfolio-Web-10B981?style=for-the-badge&logo=google-chrome&logoColor=white" />
-    </a>
+  <p align="center">
+    A modern, high-performance portfolio website built to showcase the intersection of 
+    <b>Agri-Business</b>, <b>Finance</b>, and <b>Web3 Technology</b>.
   </p>
 
-  <br/>
+  <a href="https://pethumkashmira.site">
+    <img src="https://img.shields.io/badge/View_Live_Site-Visit_Now-059669?style=for-the-badge&logo=google-chrome&logoColor=white" />
+  </a>
 
-  <img src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif" width="100%" style="border-radius: 10px; border: 2px solid #333;" alt="Portfolio Animation" />
+  <br/><br/>
 
+  <div align="center">
+    <img src="https://img.shields.io/badge/React-18.x-61DAFB?style=for-the-badge&logo=react&logoColor=black" />
+    <img src="https://img.shields.io/badge/Vite-5.x-646CFF?style=for-the-badge&logo=vite&logoColor=white" />
+    <img src="https://img.shields.io/badge/Tailwind_CSS-3.x-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
+    <img src="https://img.shields.io/badge/Firebase-Backend-FFCA28?style=for-the-badge&logo=firebase&logoColor=black" />
+  </div>
 </div>
 
-<br/>
+<br />
 
-# ⚡ About The Project
+## 🌟 Overview
 
-**"Bridging Agri-Business, Financial Strategy & Web3 Technology."**
+This project is a personal portfolio website designed with a focus on modern UI/UX principles. It features a fully responsive layout, interactive elements, and a dynamic admin dashboard for managing content. The site highlights professional expertise in **Agriculture**, **Chartered Accounting**, and **Blockchain Development**.
 
-This isn't just a portfolio; it's a **Digital Experience**. Built with the latest web technologies, this Single Page Application (SPA) features a fully functional **Admin CMS**, **Real-time Chat**, and **Crypto Integrations**, wrapped in a stunning **Glassmorphism** UI.
+---
 
-### 🌟 Key Features
+## ✨ Key Features
 
-| 🎨 **UI / UX** | ⚙️ **Functionality** | 🔐 **Security & Admin** |
-|:---|:---|:---|
-| ✨ **Mouse Glow Effects** | 💬 **Real-time Live Chat** | 🛡️ **Admin Authentication** |
-| 🌓 **Dark/Light Mode** | 📝 **Article Publishing CMS** | ⚡ **Firebase Backend** |
-| 🎭 **Animated SVGs** | 🪙 **Live Crypto Ticker** | 📊 **Visitor Analytics** |
-| 📱 **Fully Responsive** | 🚀 **NFT Drop Section** | 🎛️ **Service Management** |
+| Feature | Description |
+| :--- | :--- |
+| **🎨 Modern UI/UX** | Built with **Tailwind CSS**, featuring Glassmorphism, Tilt effects, and smooth animations. |
+| **🖱️ Mouse Glow** | Custom cursor tracking effect (`MouseGlow.jsx`) for an immersive experience. |
+| **💬 Chat Widget** | Integrated live chat functionality for real-time visitor interaction. |
+| **⚙️ Admin Dashboard** | Secure backend powered by **Firebase** to manage articles and site data easily. |
+| **📱 Fully Responsive** | Optimized for Desktops, Tablets, and Mobile devices. |
+| **📝 Article Reader** | Dynamic blog section to share insights on Agri-Tech and Finance. |
 
 ---
 
 ## 🛠️ Tech Stack
 
 <div align="center">
-  <img src="https://skillicons.dev/icons?i=react,vite,tailwind,firebase,js,html,css,git,github,vscode" />
+  <table border="0">
+    <tr>
+      <td align="center"><b>Frontend</b></td>
+      <td align="center"><b>Styling & UX</b></td>
+      <td align="center"><b>Backend & Deployment</b></td>
+    </tr>
+    <tr>
+      <td align="center">
+        <img src="https://skillicons.dev/icons?i=react,vite,js,html" />
+      </td>
+      <td align="center">
+        <img src="https://skillicons.dev/icons?i=tailwind,figma,css" />
+      </td>
+      <td align="center">
+        <img src="https://skillicons.dev/icons?i=firebase,vercel,git" />
+      </td>
+    </tr>
+  </table>
 </div>
 
 ---
 
-## 📸 Screen Previews
+## 📂 Project Structure
 
-Here is a sneak peek into the application interface.
+A quick look at the codebase organization:
 
-| **Landing Page** | **Admin Dashboard** |
-|:---:|:---:|
-| ![Landing Page](./assets/home.png) | ![Admin Panel](./assets/admin.png) |
-
----
-
-## 📊 GitHub Analytics
+```bash
+```bash
+├── public/                 # Static Assets
+│   ├── cv.pdf              # Downloadable CV File
+│   ├── music.mp3           # Background Music Track
+│   ├── profile.png         # Profile Images
+│   └── index.html          # HTML Entry Point
+├── src/
+│   ├── assets/             # React Icons & SVGs
+│   ├── components/         # UI Components
+│   │   ├── AdminDashboard.jsx  # CMS for Articles
+│   │   ├── ArticleReader.jsx   # Blog Post Viewer
+│   │   ├── AudioPlayer.jsx     # Music Controls
+│   │   ├── Background.jsx      # Animated Backgrounds
+│   │   ├── ChatWidget.jsx      # Live Chat Feature
+│   │   ├── LoginModal.jsx      # Admin Authentication
+│   │   ├── MouseGlow.jsx       # Cursor Effects
+│   │   ├── Navbar.jsx          # Responsive Navigation
+│   │   ├── Preloader.jsx       # Loading Animation
+│   │   └── [Sections]          # Hero, Services, Expertise, Journey, Contact
+│   ├── App.css             # Custom Scrollbar & Fonts
+│   ├── App.jsx             # Main Application Logic
+│   ├── firebase.js         # Firebase Configuration
+│   └── index.css           # Global Styles (Tailwind)
+├── firebase.json           # Firebase Hosting Config
+├── tailwind.config.js      # Tailwind CSS Configuration
+|── vite.config.js          # Vite Configuration
+└── ...
+```
+## 📬 Contact Me
 
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=pathumkashmira&show_icons=true&theme=radical&hide_border=true&bg_color=0d1117" height="150" alt="stats graph"  />
-  
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=pathumkashmira&layout=compact&theme=radical&hide_border=true&bg_color=0d1117" height="150" alt="languages graph"  />
-</div>
 
-<br/>
-
-<div align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=pathumkashmira&theme=radical&hide_border=true&background=0d1117" alt="GitHub Streak" />
-</div>
-
----
-
-## 🚀 Getting Started
-
-Want to run this project locally? Follow these simple steps:
-
-1.  **Clone the Repo**
-    ```bash
-    git clone [https://github.com/pathumkashmira/MyPortfolio.git](https://github.com/pathumkashmira/MyPortfolio.git)
-    ```
-
-2.  **Install Packages**
-    ```bash
-    cd MyPortfolio
-    npm install
-    ```
-
-3.  **Run Development Server**
-    ```bash
-    npm run dev
-    ```
-
----
-
-<div align="center">
-  
-  ### 🤝 Connect with Me
-  
-  <p>
-    I am open to collaborations in <strong>Full Stack Development</strong>, <strong>Agri-Tech</strong>, and <strong>Blockchain Projects</strong>.
-  </p>
-
-  <a href="https://pethumkashmira.site">
-    <img src="https://img.shields.io/badge/Visit%20My%20Website-Click%20Here-success?style=for-the-badge&logo=vercel" />
-  </a>
-
-  <br/><br/>
-  
-  <img src="https://komarev.com/ghpvc/?username=pathumkashmira&label=Profile%20Views&color=0e75b6&style=flat" alt="pathumkashmira" />
-  
-  <p>Designed & Developed with ❤️ by <strong>Pethum Kashmira</strong></p>
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/pethum-kashmira/)
+[![Facebook](https://img.shields.io/badge/Facebook-Follow-1877F2?style=for-the-badge&logo=facebook&logoColor=white)](https://web.facebook.com/pethumkashmira2)
+[![Medium](https://img.shields.io/badge/Medium-Read_Articles-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/@kpethumkashmira)
+[![Email](https://img.shields.io/badge/Email-Contact_Me-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:pethum@example.com)
+[![Website](https://img.shields.io/badge/Website-Visit_Now-059669?style=for-the-badge&logo=google-chrome&logoColor=white)](https://pethumkashmira.site)
 
 </div>
+
+<br />
+
+<div align="center"> <img src="https://capsule-render.vercel.app/api?type=waving&color=059669&height=100&section=footer" width="100%" /> <p>© 2025 Pethum Kashmira. All Rights Reserved.</p> </div>
