@@ -58,10 +58,21 @@ export default function Hero({ visitorCount, onNavigate }) {
     };
   }, []);
 
+  // 🔥 Helper to get absolute URL for Google Viewer
+  const getPdfUrl = () => {
+    if (typeof window !== "undefined") {
+      return `${window.location.origin}/Pethum_Kashmira_CV.pdf`;
+    }
+    return "";
+  };
+
   return (
     <section id="profile" className="min-h-[85vh] flex items-center justify-center pt-10">
+      
+      {/* ✅ Grid Container Starts Here (Line 71) */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center w-full">
         
+        {/* --- LEFT COLUMN --- */}
         <div className="md:col-span-7 space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100/50 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-200 text-xs font-bold uppercase tracking-wide border border-emerald-200 dark:border-emerald-800">
                 <span className="relative flex h-2 w-2">
@@ -82,7 +93,6 @@ export default function Hero({ visitorCount, onNavigate }) {
             </p>
             
             <div className="flex flex-wrap gap-4 pt-2">
-                
                 <a href="https://www.linkedin.com/in/pethum-kashmira/" target="_blank" rel="noreferrer" className="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg shadow-sm transition-all transform hover:-translate-y-0.5">
                     LinkedIn Profile
                 </a>
@@ -119,6 +129,7 @@ export default function Hero({ visitorCount, onNavigate }) {
             </div>
         </div>
 
+        {/* --- RIGHT COLUMN (Card) --- */}
         <div className="md:col-span-5 relative">
             <div ref={cardRef} className="glass-panel rounded-2xl shadow-2xl relative z-10 overflow-hidden tilt-card transition-all duration-300">
                 <div className="h-32 w-full bg-stone-200 dark:bg-stone-800">
@@ -171,10 +182,12 @@ export default function Hero({ visitorCount, onNavigate }) {
             </div>
         </div>
 
+      </div> {/* ✅ Grid Closed Correctly Here */}
+
       {/* 👇 CV Modal Popup */}
       {showCV && (
         <div 
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-in fade-in duration-200"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80 backdrop-blur-sm p-4 animate-in fade-in duration-200"
           onClick={() => setShowCV(false)}
         >
           <div 
@@ -188,17 +201,15 @@ export default function Hero({ visitorCount, onNavigate }) {
               </h3>
               
               <div className="flex items-center gap-3">
-                {/* Download Button */}
                 <a 
-                    href="/Pethum_Kashmira_CV.pdf" 
-                    download="Pethum_Kashmira_CV.pdf"
+                    href="/cv.pdf" 
+                    download="cv.pdf"
                     className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold rounded-lg shadow-md flex items-center gap-2 transition-all hover:scale-105"
                 >
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
                     <span className="hidden sm:inline">Download</span>
                 </a>
 
-                {/* Close Button */}
                 <button 
                     onClick={() => setShowCV(false)}
                     className="p-2 hover:bg-stone-200 dark:hover:bg-stone-700 rounded-full text-stone-500 dark:text-stone-400 transition-colors"
@@ -210,38 +221,22 @@ export default function Hero({ visitorCount, onNavigate }) {
               </div>
             </div>
 
-            {/* Modal Content */}
-            <div className="flex-1 bg-stone-200 dark:bg-stone-950 relative">
-              
-              {/* 🔥 Desktop View: Embed PDF */}
-              <iframe 
-                src="/Pethum_Kashmira_CV.pdf#toolbar=0"
-                className="hidden md:block w-full h-full border-none" 
-                title="CV Preview"
-              ></iframe>
+            {/* Modal Content - Dual Viewer Strategy */}
+            <div className="flex-1 bg-stone-200 dark:bg-stone-950 relative overflow-hidden">
+                
+                {/* 1. Desktop View (Native Iframe) */}
+                <iframe 
+                    src="/cv.pdf#toolbar=0&navpanes=0"
+                    className="hidden md:block w-full h-full border-none" 
+                    title="CV Preview Desktop"
+                ></iframe>
 
-              {/* 🔥 Mobile View: Fallback Message */}
-              <div className="md:hidden w-full h-full flex flex-col items-center justify-center p-6 text-center bg-stone-100 dark:bg-stone-900">
-                <div className="w-16 h-16 bg-stone-300 dark:bg-stone-800 rounded-full flex items-center justify-center mb-4 shadow-inner">
-                    <svg className="w-8 h-8 text-stone-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
-                </div>
-                <h4 className="text-lg font-bold text-stone-800 dark:text-white mb-2">
-                    PDF Preview Not Available
-                </h4>
-                <p className="text-sm text-stone-500 dark:text-stone-400 mb-6 max-w-xs">
-                    Mobile browsers cannot embed PDF files directly. Please open the file to view.
-                </p>
-                <a 
-                    href="/Pethum_Kashmira_CV.pdf" 
-                    target="_blank"
-                    className="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-lg transition-transform active:scale-95 flex items-center gap-2"
-                >
-                    Open PDF File
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
-                </a>
-              </div>
+                {/* 2. Mobile View (Google Docs Viewer Hack) */}
+                <iframe 
+                    src={`https://docs.google.com/viewer?url=${getPdfUrl()}&embedded=true`}
+                    className="md:hidden w-full h-full border-none"
+                    title="CV Preview Mobile"
+                ></iframe>
 
             </div>
 
