@@ -6,7 +6,10 @@ export default function Hero({ visitorCount, onNavigate }) {
   
   // 👇 Popup State
   const [showCV, setShowCV] = useState(false);
-  
+
+  // 🔥 🔴 ඔයාගේ Google Drive File ID එක මෙතනට දාන්න
+  const GOOGLE_DRIVE_FILE_ID = "1S5MfjKFDIsyRJkZTkwnmxbW_dJSlCzoi"; 
+
   useEffect(() => {
     const textToType = ["Agri-Business", "Financial Strategy", "Blockchain technology"];
     let typeIdx = 0;
@@ -69,7 +72,7 @@ export default function Hero({ visitorCount, onNavigate }) {
   return (
     <section id="profile" className="min-h-[85vh] flex items-center justify-center pt-10">
       
-      {/* ✅ Grid Container Starts Here (Line 71) */}
+      {/* ✅ Grid Container Starts */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center w-full">
         
         {/* --- LEFT COLUMN --- */}
@@ -197,7 +200,7 @@ export default function Hero({ visitorCount, onNavigate }) {
             {/* Modal Header */}
             <div className="flex justify-between items-center p-4 border-b border-stone-200 dark:border-stone-700 bg-stone-50 dark:bg-stone-800">
               <h3 className="text-lg font-bold text-stone-800 dark:text-white flex items-center gap-2">
-                Curriculum Vitae
+                Pethum Kashmira - CV
               </h3>
               
               <div className="flex items-center gap-3">
@@ -231,12 +234,20 @@ export default function Hero({ visitorCount, onNavigate }) {
                     title="CV Preview Desktop"
                 ></iframe>
 
-                {/* 2. Mobile View (Google Docs Viewer Hack) */}
-                <iframe 
-                    src={`https://docs.google.com/viewer?url=${getPdfUrl()}&embedded=true`}
-                    className="md:hidden w-full h-full border-none"
-                    title="CV Preview Mobile"
-                ></iframe>
+                {/* 2. Mobile View (Google Drive Embed) */}
+                {GOOGLE_DRIVE_FILE_ID !== "YOUR_FILE_ID_HERE" ? (
+                    <iframe 
+                        src={`https://drive.google.com/file/d/${GOOGLE_DRIVE_FILE_ID}/preview`}
+                        className="md:hidden w-full h-full border-none"
+                        title="CV Preview Mobile"
+                        allow="autoplay"
+                    ></iframe>
+                ) : (
+                    <div className="md:hidden w-full h-full flex flex-col items-center justify-center p-6 text-center text-stone-500">
+                        <p>Mobile preview setup required.</p>
+                        <a href="/Pethum_Kashmira_CV.pdf" target="_blank" className="mt-4 text-emerald-600 underline font-bold">Download File</a>
+                    </div>
+                )}
 
             </div>
 
