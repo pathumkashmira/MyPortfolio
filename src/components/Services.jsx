@@ -74,7 +74,7 @@ export default function Services({ isAdmin, onEdit, onDelete }) {
                         </div>
                         <div className="p-5 flex flex-col flex-grow">
                             <div className="flex items-center gap-2 mb-3">
-                                <img src="https://ibb.co/VWYY5nF8" alt="PK" className="w-8 h-8 rounded-full border border-stone-200" />
+                                <img src="https://my-portfolio-flax-mu-78.vercel.app/profile.png" alt="PK" className="w-8 h-8 rounded-full border border-stone-200" />
                                 <div>
                                     <p className="text-xs font-bold text-stone-700 dark:text-stone-300">Pethum Kashmira</p>
                                     <p className="text-[10px] text-stone-400">Level 2 Seller</p>
