@@ -7,12 +7,12 @@ export default function Expertise() {
   // --- Data: Cards ---
   const expertiseCards = [
     {
-      title: "BSc (Hons) in Agri Business",
+      title: "BSc (Hons) in Agri Business Management",
       desc: "Reading for a BSc (Hons) in Agri Business Management at the University of Ruhuna. Specializing in sustainable supply chain strategies and farm economics.",
       img: "https://www.buhave.com/guide/wp-content/uploads/2025/05/University-of-Ruhuna.webp"
     },
     {
-      title: "Finance & Audit",
+      title: "Chartered Accountancy",
       desc: "Reading for the Chartered Accountant qualification at CA Sri Lanka. Mastering financial reporting, statutory auditing, and taxation strategies.",
       img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp_DARSOSHJ9wYfV1NPhGks-HzpBjFoxnjsA&s"
     },
@@ -22,7 +22,7 @@ export default function Expertise() {
       img: "https://cdn.prod.website-files.com/606a802fcaa89bc357508cad/62291b5f923ec472a68d77ea_Blog%20-%201%20(2).png"
     },
     {
-      title: "Web3 & Blockchain",
+      title: "Web3 & Blockchain Technology",
       desc: "Deeply immersed in the decentralized economy. Expertise in analyzing tokenomics, DeFi protocols, NFT ecosystems, and airdrop strategies.",
       img: "https://www.menosfios.com/wp-content/uploads/2023/07/web-3.0.jpg"
     }
