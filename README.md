@@ -136,6 +136,7 @@ This is **Version 3.0** of my personal portfolio. It has evolved from a simple s
 ├── tailwind.config.js      # Tailwind CSS Configuration
 ├── vercel.json             # Vercel Deployment Config
 └── vite.config.js          # Vite Configuration
+
 ```
 ## 📬 Contact Me
 
