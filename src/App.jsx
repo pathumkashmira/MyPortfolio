@@ -115,6 +115,9 @@ function App() {
   const [introFading, setIntroFading] = useState(false);
   const [showIntro, setShowIntro] = useState(true);
 
+  // 🔥 SIDEBAR COLLAPSE STATE
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+
   const [currentPage, setCurrentPage] = useState('profile');
   const [user, setUser] = useState(null); 
   const [isAdmin, setIsAdmin] = useState(false); 
@@ -233,18 +236,32 @@ function App() {
 
   return (
     <>
+      {/* 1. INTRO LAYER (Fades Out) */}
       {showIntro && <IntroScreen onEnter={handleEnter} isFading={introFading} />}
 
-      <div className="flex h-screen bg-stone-50 dark:bg-[#0c0a09] text-stone-800 dark:text-dark-text font-sans overflow-hidden transition-colors duration-300">
+      {/* 2. MAIN APP LAYER (Always Visible Behind) */}
+      <div 
+        className="flex h-screen bg-stone-50 dark:bg-[#0c0a09] text-stone-800 dark:text-dark-text font-sans overflow-hidden transition-colors duration-300"
+      >
         
         <Preloader />
         <Background />
         <MouseGlow />
 
-        <Sidebar onNavigate={handleNavigate} currentPage={currentPage} onSecretClick={() => setIsLoginOpen(true)} user={user} />
+        {/* SIDEBAR with Collapse Props */}
+        <Sidebar 
+            onNavigate={handleNavigate} 
+            currentPage={currentPage} 
+            onSecretClick={() => setIsLoginOpen(true)} 
+            user={user} 
+            isCollapsed={isSidebarCollapsed}
+            toggleCollapse={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+        />
+        
         <NotificationPopup onOpen={handleNotificationClick} />
 
-        <div className="flex-1 flex flex-col h-full overflow-y-auto relative z-10 md:ml-64 pt-16 md:pt-0">
+        {/* DYNAMIC MARGIN based on Sidebar State */}
+        <div className={`flex-1 flex flex-col h-full overflow-y-auto relative z-10 pt-16 md:pt-0 transition-all duration-300 ${isSidebarCollapsed ? 'md:ml-20' : 'md:ml-64'}`}>
             
             <main className="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 py-10">
               

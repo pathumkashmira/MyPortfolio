@@ -67,7 +67,7 @@ export default function Expertise() {
                 <div className="relative">
                     <div className="absolute inset-0 bg-emerald-500 rounded-full blur-xl opacity-20 animate-pulse"></div>
                     <img 
-                        src="/profile.png" 
+                        src="/about.png" 
                         alt="Pethum Kashmira" 
                         className="relative w-64 h-64 rounded-full object-cover border-4 border-white dark:border-stone-800 shadow-2xl z-10"
                     />
