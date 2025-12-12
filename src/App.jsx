@@ -6,7 +6,7 @@ import { doc, getDoc, setDoc, updateDoc, increment, deleteDoc } from 'firebase/f
 import Preloader from './components/Preloader';
 import Background from './components/Background';
 import MouseGlow from './components/MouseGlow';
-import Sidebar from './components/Sidebar'; // 🔥 Navbar එක වෙනුවට Sidebar
+import Sidebar from './components/Sidebar';
 import Hero from './components/Hero';
 import Expertise from './components/Expertise';
 import Journey from './components/Journey';
@@ -38,34 +38,94 @@ const CryptoTicker = () => {
 
   return (
     <div className="w-full bg-stone-50 dark:bg-[#0c0a09] border-t border-stone-200 dark:border-stone-800 relative z-30">
-      <coingecko-coin-price-marquee-widget 
-        coin-ids="bitcoin,ethereum,solana,binancecoin,ripple,cardano,polkadot" 
-        currency="usd" 
-        background-color="transparent" 
-        locale="en" 
-        font-color="#059669"
-      ></coingecko-coin-price-marquee-widget>
+      <coingecko-coin-price-marquee-widget coin-ids="bitcoin,ethereum,solana,binancecoin,ripple,cardano,polkadot" currency="usd" background-color="transparent" locale="en" font-color="#059669"></coingecko-coin-price-marquee-widget>
+    </div>
+  );
+};
+
+// --- 🔥 INTRO COMPONENT (SPACE THEME) ---
+const IntroScreen = ({ onEnter, isFading }) => {
+  // Generate random stars
+  const stars = Array.from({ length: 50 }).map((_, i) => ({
+    id: i,
+    top: `${Math.random() * 100}%`,
+    left: `${Math.random() * 100}%`,
+    delay: `${Math.random() * 3}s`,
+    size: Math.random() > 0.5 ? 'w-1 h-1' : 'w-0.5 h-0.5'
+  }));
+
+  const title = "Welcome to My Universe";
+  
+  return (
+    <div 
+        className={`fixed inset-0 z-[100] flex flex-col items-center justify-center space-bg overflow-hidden text-white transition-opacity duration-1000 ease-in-out ${isFading ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+    >
+      
+      {/* Stars */}
+      {stars.map(star => (
+        <div 
+          key={star.id}
+          className={`absolute bg-white rounded-full star-twinkle ${star.size}`}
+          style={{ top: star.top, left: star.left, animationDelay: star.delay }}
+        ></div>
+      ))}
+
+      {/* Glowing Center */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-emerald-500/20 rounded-full blur-[100px] animate-pulse"></div>
+
+      <div className="relative z-10 text-center px-4">
+        <h1 className="text-4xl md:text-7xl font-extrabold mb-8 tracking-tight drop-shadow-2xl">
+          {title.split("").map((char, index) => (
+            <span 
+              key={index} 
+              className="letter-anim inline-block" 
+              style={{ animationDelay: `${index * 0.05}s` }}
+            >
+              {char === " " ? "\u00A0" : char}
+            </span>
+          ))}
+        </h1>
+
+        <p className="text-stone-400 text-lg mb-12 max-w-lg mx-auto opacity-0 animate-fade-in-up" style={{ animationDelay: '1.5s', animationFillMode: 'forwards' }}>
+            Step into a world where Agri-Business meets Financial Strategy & Web3 Innovation.
+        </p>
+
+        <button 
+            onClick={onEnter}
+            className="opacity-0 animate-fade-in-up group relative px-8 py-3 bg-transparent overflow-hidden rounded-full transition-all hover:scale-110"
+            style={{ animationDelay: '2s', animationFillMode: 'forwards' }}
+        >
+            <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-emerald-500 to-cyan-500 opacity-20 group-hover:opacity-80 transition-opacity duration-500 blur-md"></div>
+            <div className="absolute inset-0 w-full h-full border border-emerald-500 rounded-full"></div>
+            <span className="relative flex items-center gap-3 text-emerald-400 group-hover:text-white font-bold tracking-widest uppercase text-sm">
+                Enter Experience 🚀
+            </span>
+        </button>
+      </div>
     </div>
   );
 };
 
 // --- MAIN APP ---
 function App() {
+  const [introFading, setIntroFading] = useState(false);
+  const [showIntro, setShowIntro] = useState(true);
+
   const [currentPage, setCurrentPage] = useState('profile');
-  
-  // Auth & Admin States
   const [user, setUser] = useState(null); 
   const [isAdmin, setIsAdmin] = useState(false); 
-  
-  // UI States
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [visitors, setVisitors] = useState("Loading...");
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [editItem, setEditItem] = useState(null);
   const [selectedArticle, setSelectedArticle] = useState(null); 
-  
-  // 🔥 Notification Target State
   const [notificationTargetId, setNotificationTargetId] = useState(null);
+
+  // --- Handlers ---
+  const handleEnter = () => {
+      setIntroFading(true); // Start fading out
+      setTimeout(() => setShowIntro(false), 1000); // Remove from DOM after fade animation
+  };
 
   // 1. VISITOR COUNT
   useEffect(() => {
@@ -102,22 +162,18 @@ function App() {
     return () => unsubscribe();
   }, []);
 
-  // --- HANDLERS ---
   const handleNavigate = (page) => {
     setCurrentPage(page);
     setSelectedArticle(null); 
     window.scrollTo(0, 0);
   };
 
-  // 🔥 Handle Notification Click
   const handleNotificationClick = (item) => {
       if (item.type === 'airdrops') {
           setCurrentPage('airdrops');
           setNotificationTargetId(item.id);
       } else if (item.type === 'articles') {
           setCurrentPage('articles');
-          // Note: Article reader handles ID automatically if we pass it, 
-          // or we can select it if the list is loaded.
       } else if (item.type === 'services') {
           setCurrentPage('fiverr-gigs');
       }
@@ -142,101 +198,71 @@ function App() {
   };
 
   return (
-    // 🔥 NEW LAYOUT: Flex Row structure for Sidebar + Content
-    <div className="flex h-screen bg-stone-50 dark:bg-[#0c0a09] text-stone-800 dark:text-dark-text font-sans overflow-hidden transition-colors duration-300">
-      
-      {/* 1. VISUAL EFFECTS */}
-      <Preloader />
-      <Background />
-      <MouseGlow />
+    <>
+      {/* 1. INTRO LAYER (Fades Out) */}
+      {showIntro && <IntroScreen onEnter={handleEnter} isFading={introFading} />}
 
-      {/* 2. SIDEBAR (Fixed Left) */}
-      <Sidebar 
-        onNavigate={handleNavigate} 
-        currentPage={currentPage} 
-        onSecretClick={() => setIsLoginOpen(true)} 
-        user={user} 
-      />
+      {/* 2. MAIN APP LAYER (Always Visible Behind) */}
+      <div 
+        className="flex h-screen bg-stone-50 dark:bg-[#0c0a09] text-stone-800 dark:text-dark-text font-sans overflow-hidden transition-colors duration-300"
+      >
+        
+        <Preloader />
+        <Background />
+        <MouseGlow />
 
-      {/* 🔥 ADDED: Notification Popup (Fixed Top-Left) */}
-      <NotificationPopup onOpen={handleNotificationClick} />
+        <Sidebar onNavigate={handleNavigate} currentPage={currentPage} onSecretClick={() => setIsLoginOpen(true)} user={user} />
+        <NotificationPopup onOpen={handleNotificationClick} />
 
-      {/* 3. MAIN CONTENT AREA (Scrollable Right Side) */}
-      <div className="flex-1 flex flex-col h-full overflow-y-auto relative z-10 md:ml-64 pt-16 md:pt-0 transition-all duration-300">
-          
-          <main className="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 py-10">
+        <div className="flex-1 flex flex-col h-full overflow-y-auto relative z-10 md:ml-64 pt-16 md:pt-0">
             
-            {/* Admin Dashboard */}
-            {user && (
-                <AdminDashboard 
-                    editItem={editItem} 
-                    setEditItem={setEditItem} 
-                    user={user} 
-                    isAdmin={isAdmin} 
-                />
-            )}
-            
-            {/* Page Rendering Logic */}
-            {currentPage === 'profile' && <Hero visitorCount={visitors} onNavigate={handleNavigate} />}
-            {currentPage === 'expertise' && <Expertise />}
-            
-            {/* 🔥 Fixed 'timeline' rendering (Matches Sidebar ID) */}
-            {currentPage === 'timeline' && <Journey isAdmin={isAdmin} onEdit={(item) => handleEdit(item, 'journey')} onDelete={(id) => handleDelete('journey', id)} />}
-            
-            {currentPage === 'articles' && (
-                selectedArticle ? (
-                    <ArticleReader article={selectedArticle} onBack={() => { setSelectedArticle(null); window.scrollTo(0,0); }} />
-                ) : (
-                    <Articles 
+            <main className="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 py-10">
+              {user && <AdminDashboard editItem={editItem} setEditItem={setEditItem} user={user} isAdmin={isAdmin} />}
+              
+              {currentPage === 'profile' && <Hero visitorCount={visitors} onNavigate={handleNavigate} />}
+              {currentPage === 'about' && <Expertise />}
+              {currentPage === 'timeline' && <Journey isAdmin={isAdmin} onEdit={(item) => handleEdit(item, 'journey')} onDelete={(id) => handleDelete('journey', id)} />}
+              
+              {currentPage === 'articles' && (
+                  selectedArticle ? (
+                      <ArticleReader article={selectedArticle} onBack={() => { setSelectedArticle(null); window.scrollTo(0,0); }} />
+                  ) : (
+                      <Articles 
                         isAdmin={isAdmin} 
                         onEdit={(item) => handleEdit(item, 'articles')} 
-                        onDelete={(id) => handleDelete('articles', id)}
-                        onRead={(article) => {
+                        onDelete={(id) => handleDelete('articles', id)} 
+                        onRead={(article) => { 
                             if (article.mode === 'write' || article.content) { setSelectedArticle(article); } 
-                            else { window.open(article.link, '_blank'); }
-                        }}
-                    />
-                )
-            )}
-            
-            {/* 🔥 AIRDROPS PAGE (With Target ID for Notification) */}
-            {currentPage === 'airdrops' && (
-                <Airdrops 
-                    isAdmin={isAdmin} 
-                    onEdit={(item) => handleEdit(item, 'airdrops')} 
-                    onDelete={(id) => handleDelete('airdrops', id)} 
-                    targetId={notificationTargetId}
-                />
-            )}
-            
-            {currentPage === 'fiverr-gigs' && <Services isAdmin={isAdmin} onEdit={(item) => handleEdit(item, 'services')} onDelete={(id) => handleDelete('services', id)} />}
-            
-            {currentPage === 'contact' && <Contact openChat={() => setIsChatOpen(true)} />}
+                            else { window.open(article.link, '_blank'); } 
+                        }} 
+                      />
+                  )
+              )}
+              
+              {currentPage === 'airdrops' && <Airdrops isAdmin={isAdmin} onEdit={(item) => handleEdit(item, 'airdrops')} onDelete={(id) => handleDelete('airdrops', id)} targetId={notificationTargetId} />}
+              
+              {currentPage === 'fiverr-gigs' && <Services isAdmin={isAdmin} onEdit={(item) => handleEdit(item, 'services')} onDelete={(id) => handleDelete('services', id)} />}
+              
+              {currentPage === 'contact' && <Contact openChat={() => setIsChatOpen(true)} />}
+              
+              {currentPage === 'nft-drop' && (
+                  <div className="text-center mt-20 fade-in min-h-[50vh] flex flex-col justify-center items-center">
+                      <span className="inline-block py-1 px-4 rounded-full bg-indigo-500/20 text-indigo-500 text-xs font-bold uppercase tracking-widest mb-4">Coming Soon</span>
+                      <h2 className="text-4xl font-bold flex items-center justify-center gap-3 text-stone-900 dark:text-white">NFT Collection Drop 🚀</h2>
+                  </div>
+              )}
+            </main>
 
-            {currentPage === 'nft-drop' && (
-                <div className="text-center mt-20 fade-in min-h-[50vh] flex flex-col justify-center items-center">
-                    <span className="inline-block py-1 px-4 rounded-full bg-indigo-500/20 text-indigo-500 text-xs font-bold uppercase tracking-widest mb-4">Coming Soon</span>
-                    <h2 className="text-4xl font-bold flex items-center justify-center gap-3 text-stone-900 dark:text-white">
-                        NFT Collection Drop 
-                        <svg className="w-10 h-10 text-indigo-500 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16 8l2 2 14 14" />
-                        </svg>
-                    </h2>
-                </div>
-            )}
-          </main>
+            <CryptoTicker />
+            <Footer />
+        </div>
 
-          {/* Footer & Ticker inside Scrollable Area */}
-          <CryptoTicker />
-          <Footer />
+        <AudioPlayer />
+        <ChatWidget isOpen={isChatOpen} setIsOpen={setIsChatOpen} />
+        <LoginModal isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
+
       </div>
-
-      {/* 4. FIXED OVERLAYS */}
-      <AudioPlayer />
-      <ChatWidget isOpen={isChatOpen} setIsOpen={setIsChatOpen} />
-      <LoginModal isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
-
-    </div>
+    </>
   );
 }
 
