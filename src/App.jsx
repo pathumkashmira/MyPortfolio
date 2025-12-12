@@ -16,7 +16,7 @@ import ArticleReader from './components/ArticleReader';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import AudioPlayer from './components/AudioPlayer';
-// import ChatWidget from './components/ChatWidget';
+import ChatWidget from './components/ChatWidget';
 import AdminDashboard from './components/AdminDashboard'; 
 import LoginModal from './components/LoginModal'; 
 import Airdrops from './components/Airdrops';
@@ -123,7 +123,7 @@ function App() {
   const [isAdmin, setIsAdmin] = useState(false); 
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [visitors, setVisitors] = useState("Loading...");
-  // const [isChatOpen, setIsChatOpen] = useState(false);
+  const [isChatOpen, setIsChatOpen] = useState(false);
   const [editItem, setEditItem] = useState(null);
   const [selectedArticle, setSelectedArticle] = useState(null); 
   const [notificationTargetId, setNotificationTargetId] = useState(null);
@@ -133,6 +133,34 @@ function App() {
       setIntroFading(true); 
       setTimeout(() => setShowIntro(false), 1000); 
   };
+
+  // 🔥 DISABLE RIGHT CLICK & INSPECT SHORTCUTS
+  useEffect(() => {
+    // 1. Disable Context Menu (Right Click)
+    const handleContextMenu = (e) => {
+      e.preventDefault();
+    };
+
+    // 2. Disable Keyboard Shortcuts (F12, Ctrl+Shift+I, Ctrl+U)
+    const handleKeyDown = (e) => {
+      if (
+        e.key === 'F12' || 
+        (e.ctrlKey && e.shiftKey && e.key === 'I') || 
+        (e.ctrlKey && e.shiftKey && e.key === 'J') || 
+        (e.ctrlKey && e.key === 'U')
+      ) {
+        e.preventDefault();
+      }
+    };
+
+    document.addEventListener('contextmenu', handleContextMenu);
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('contextmenu', handleContextMenu);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
 
   // 🔥 URL PARAMETER CHECK
   useEffect(() => {
@@ -309,7 +337,7 @@ function App() {
         </div>
 
         <AudioPlayer />
-        {/* <ChatWidget isOpen={isChatOpen} setIsOpen={setIsChatOpen} /> */}
+        <ChatWidget isOpen={isChatOpen} setIsOpen={setIsChatOpen} />
         <LoginModal isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
 
       </div>
