@@ -38,14 +38,19 @@ const CryptoTicker = () => {
 
   return (
     <div className="w-full bg-stone-50 dark:bg-[#0c0a09] border-t border-stone-200 dark:border-stone-800 relative z-30">
-      <coingecko-coin-price-marquee-widget coin-ids="bitcoin,ethereum,solana,binancecoin,ripple,cardano,polkadot" currency="usd" background-color="transparent" locale="en" font-color="#059669"></coingecko-coin-price-marquee-widget>
+      <coingecko-coin-price-marquee-widget 
+        coin-ids="bitcoin,ethereum,solana,binancecoin,ripple,cardano,polkadot" 
+        currency="usd" 
+        background-color="transparent" 
+        locale="en" 
+        font-color="#059669"
+      ></coingecko-coin-price-marquee-widget>
     </div>
   );
 };
 
 // --- 🔥 INTRO COMPONENT (SPACE THEME) ---
 const IntroScreen = ({ onEnter, isFading }) => {
-  // Generate random stars
   const stars = Array.from({ length: 50 }).map((_, i) => ({
     id: i,
     top: `${Math.random() * 100}%`,
@@ -60,7 +65,6 @@ const IntroScreen = ({ onEnter, isFading }) => {
     <div 
         className={`fixed inset-0 z-[100] flex flex-col items-center justify-center space-bg overflow-hidden text-white transition-opacity duration-1000 ease-in-out ${isFading ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
     >
-      
       {/* Stars */}
       {stars.map(star => (
         <div 
@@ -123,9 +127,39 @@ function App() {
 
   // --- Handlers ---
   const handleEnter = () => {
-      setIntroFading(true); // Start fading out
-      setTimeout(() => setShowIntro(false), 1000); // Remove from DOM after fade animation
+      setIntroFading(true); 
+      setTimeout(() => setShowIntro(false), 1000); 
   };
+
+  // 🔥 URL PARAMETER CHECK
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const type = params.get('type');
+    const id = params.get('id');
+
+    if (type && id) {
+        setShowIntro(false); 
+        
+        if (type === 'article') {
+            const fetchArticle = async () => {
+                try {
+                    const docRef = doc(db, 'articles', id);
+                    const docSnap = await getDoc(docRef);
+                    if (docSnap.exists()) {
+                        setSelectedArticle({ id: docSnap.id, ...docSnap.data() });
+                        setCurrentPage('articles');
+                    }
+                } catch(e) { console.error(e); }
+            };
+            fetchArticle();
+        } else if (type === 'airdrop') {
+            setNotificationTargetId(id);
+            setCurrentPage('airdrops');
+        } else if (type === 'service') {
+            setCurrentPage('fiverr-gigs');
+        }
+    }
+  }, []);
 
   // 1. VISITOR COUNT
   useEffect(() => {
@@ -199,13 +233,9 @@ function App() {
 
   return (
     <>
-      {/* 1. INTRO LAYER (Fades Out) */}
       {showIntro && <IntroScreen onEnter={handleEnter} isFading={introFading} />}
 
-      {/* 2. MAIN APP LAYER (Always Visible Behind) */}
-      <div 
-        className="flex h-screen bg-stone-50 dark:bg-[#0c0a09] text-stone-800 dark:text-dark-text font-sans overflow-hidden transition-colors duration-300"
-      >
+      <div className="flex h-screen bg-stone-50 dark:bg-[#0c0a09] text-stone-800 dark:text-dark-text font-sans overflow-hidden transition-colors duration-300">
         
         <Preloader />
         <Background />
@@ -217,6 +247,7 @@ function App() {
         <div className="flex-1 flex flex-col h-full overflow-y-auto relative z-10 md:ml-64 pt-16 md:pt-0">
             
             <main className="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 py-10">
+              
               {user && <AdminDashboard editItem={editItem} setEditItem={setEditItem} user={user} isAdmin={isAdmin} />}
               
               {currentPage === 'profile' && <Hero visitorCount={visitors} onNavigate={handleNavigate} />}
@@ -232,8 +263,11 @@ function App() {
                         onEdit={(item) => handleEdit(item, 'articles')} 
                         onDelete={(id) => handleDelete('articles', id)} 
                         onRead={(article) => { 
-                            if (article.mode === 'write' || article.content) { setSelectedArticle(article); } 
-                            else { window.open(article.link, '_blank'); } 
+                            if (article.mode === 'link' || (article.link && article.link.length > 5)) { 
+                                window.open(article.link, '_blank'); 
+                            } else { 
+                                setSelectedArticle(article); 
+                            } 
                         }} 
                       />
                   )
