@@ -11,14 +11,14 @@ export default function Services({ isAdmin, onEdit, onDelete }) {
   const [currency, setCurrency] = useState('USD'); 
   const [selectedPackage, setSelectedPackage] = useState(null); 
 
-  const WHATSAPP_NUMBER = "947XXXXXXXX"; // 🔥 ඔබේ අංකය
+  const WHATSAPP_NUMBER = "94769667684"; // 🔥 ඔබේ අංකය
 
   // --- 🔥 PORTFOLIO ONLY PACKAGES ---
   const packages = [
     {
       name: "Student / CV Portfolio",
       priceUSD: "40",
-      priceLKR: "12,000",
+      priceLKR: "6000",
       type: "Simple & Clean",
       desc: "Perfect for students to showcase their resume online.",
       features: ["One Page Digital CV", "Mobile Responsive", "Contact & Social Links", "Fast Loading", "Source Code Included"],
@@ -29,7 +29,7 @@ export default function Services({ isAdmin, onEdit, onDelete }) {
     {
       name: "Pro Freelancer Portfolio",
       priceUSD: "100",
-      priceLKR: "30,000",
+      priceLKR: "20,000",
       type: "Modern Design",
       desc: "For designers, developers & freelancers to show work.",
       features: ["3 Pages (Home, Work, Contact)", "Project Gallery", "Modern Animations", "Dark Mode Support", "Admin Panel to Edit"],
@@ -39,8 +39,8 @@ export default function Services({ isAdmin, onEdit, onDelete }) {
     },
     {
       name: "Business / Agency Site",
-      priceUSD: "250",
-      priceLKR: "75,000",
+      priceUSD: "200",
+      priceLKR: "50,000",
       type: "Professional", 
       desc: "For small businesses or agencies to display services.",
       features: ["Up to 5 Pages", "Services & Team Section", "Testimonials Slider", "Blog Section", "SEO Optimization"],
@@ -50,7 +50,7 @@ export default function Services({ isAdmin, onEdit, onDelete }) {
     },
     {
       name: "Custom 3D / Creative",
-      priceUSD: "500+",
+      priceUSD: "300+",
       priceLKR: "150,000+",
       type: "High-End",
       desc: "Unique, interactive 3D portfolios for maximum impact.",

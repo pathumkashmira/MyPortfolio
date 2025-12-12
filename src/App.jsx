@@ -16,7 +16,7 @@ import ArticleReader from './components/ArticleReader';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import AudioPlayer from './components/AudioPlayer';
-import ChatWidget from './components/ChatWidget';
+// import ChatWidget from './components/ChatWidget';
 import AdminDashboard from './components/AdminDashboard'; 
 import LoginModal from './components/LoginModal'; 
 import Airdrops from './components/Airdrops';
@@ -123,7 +123,7 @@ function App() {
   const [isAdmin, setIsAdmin] = useState(false); 
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [visitors, setVisitors] = useState("Loading...");
-  const [isChatOpen, setIsChatOpen] = useState(false);
+  // const [isChatOpen, setIsChatOpen] = useState(false);
   const [editItem, setEditItem] = useState(null);
   const [selectedArticle, setSelectedArticle] = useState(null); 
   const [notificationTargetId, setNotificationTargetId] = useState(null);
@@ -309,7 +309,7 @@ function App() {
         </div>
 
         <AudioPlayer />
-        <ChatWidget isOpen={isChatOpen} setIsOpen={setIsChatOpen} />
+        {/* <ChatWidget isOpen={isChatOpen} setIsOpen={setIsChatOpen} /> */}
         <LoginModal isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
 
       </div>
