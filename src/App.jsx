@@ -136,12 +136,10 @@ function App() {
 
   // 🔥 DISABLE RIGHT CLICK & INSPECT SHORTCUTS
   useEffect(() => {
-    // 1. Disable Context Menu (Right Click)
     const handleContextMenu = (e) => {
       e.preventDefault();
     };
 
-    // 2. Disable Keyboard Shortcuts (F12, Ctrl+Shift+I, Ctrl+U)
     const handleKeyDown = (e) => {
       if (
         e.key === 'F12' || 
@@ -161,14 +159,21 @@ function App() {
       document.removeEventListener('keydown', handleKeyDown);
     };
   }, []);
-
-  // 🔥 URL PARAMETER CHECK
+  
+  // 🔥 URL PARAMETER & DOMAIN CHECK
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const type = params.get('type');
     const id = params.get('id');
+    const hostname = window.location.hostname; // e.g. "pethum.dev"
 
-    if (type && id) {
+    // 1. Domain Check (pethum.dev -> Services Page)
+    if (hostname === 'pethum.dev' || hostname === 'www.pethum.dev') {
+        setShowIntro(false);
+        setCurrentPage('fiverr-gigs');
+    }
+    // 2. URL Params Check
+    else if (type && id) {
         setShowIntro(false); 
         
         if (type === 'article') {
