@@ -39,13 +39,15 @@ export default function Navbar({ onNavigate, currentPage, onSecretClick, user })
     }
   };
 
-  const navItems = [
+  // navItems array ekata meka add karanna
+const navItems = [
     { id: 'profile', label: 'Profile' },
     { id: 'expertise', label: 'Expertise' },
     { id: 'timeline', label: 'Journey' },
     { id: 'articles', label: 'Articles' },
+    { id: 'airdrops', label: 'Airdrops' }, // 🔥 ALUTHIN ADD KALA
     { id: 'contact', label: 'Contact' }
-  ];
+];
 
   return (
     <nav className="sticky top-0 z-50 bg-stone-50/90 dark:bg-stone-900/90 border-b border-stone-200 dark:border-stone-800 backdrop-blur-md transition-all duration-300">
