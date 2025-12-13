@@ -137,7 +137,7 @@ export default function Services({ isAdmin, onEdit, onDelete }) {
         {/* 1. HERO DIRECT HIRE CARD */}
         <div className="reveal mb-20 relative group max-w-5xl mx-auto">
             <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-3xl blur opacity-20 group-hover:opacity-40 transition-opacity"></div>
-            <div className="relative bg-stone-900 text-white rounded-3xl p-8 md:p-12 border border-stone-700 shadow-2xl flex flex-col md:flex-row items-center gap-10 overflow-hidden">
+            <div className="relative bg-stone-9 text-white rounded-3xl p-8 md:p-12 border border-stone-700 shadow-2xl flex flex-col md:flex-row items-center gap-10 overflow-hidden">
                 <div className="flex-1 text-center md:text-left z-10">
                     <div className="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-widest rounded-full mb-4 border border-emerald-500/50">Top Rated Service</div>
                     <h3 className="text-3xl md:text-5xl font-extrabold mb-4 leading-tight">Need a Portfolio? <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Let's Build It.</span></h3>
@@ -152,12 +152,33 @@ export default function Services({ isAdmin, onEdit, onDelete }) {
                         Chat on WhatsApp
                     </button>
                 </div>
+                {/* Tech Stack Animation */}
                 <div className="hidden md:flex w-1/3 justify-center items-center relative">
-                    <div className="w-48 h-48 bg-stone-800/80 rounded-full flex items-center justify-center border-4 border-stone-600 shadow-2xl group-hover:scale-110 transition-transform duration-500 backdrop-blur-sm">
-                        <svg className="w-24 h-24 text-emerald-500 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
-                    </div>
-                    <div className="absolute top-0 right-0 w-20 h-20 bg-cyan-500/30 rounded-full blur-2xl"></div>
-                    <div className="absolute bottom-0 left-0 w-20 h-20 bg-emerald-500/30 rounded-full blur-2xl"></div>
+                    {/* Background Glow */}
+                    <div className="absolute w-56 h-56 bg-[#64ffda]/10 rounded-full blur-[70px] animate-pulse"></div>
+                    
+                    {/* Floating Elements Container */}
+                    <svg className="w-72 h-72 drop-shadow-[0_0_20px_rgba(100,255,218,0.2)]" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        {/* Layer 1 */}
+                        <g className="animate-bounce" style={{animationDuration: '4s'}}>
+                            <path d="M20 70 L50 85 L80 70 L50 55 L20 70Z" stroke="#64ffda" strokeWidth="1.5" fill="rgba(10, 25, 47, 0.8)" className="path-draw" style={{animationDelay: '0s'}} />
+                            <path d="M20 70 V 80 L50 95 L80 80 V 70" stroke="#64ffda" strokeWidth="0.5" strokeLinecap="round" strokeLinejoin="round" className="path-draw" style={{animationDelay: '0.5s'}} />
+                        </g>
+                        {/* Layer 2 */}
+                        <g className="animate-bounce" style={{animationDuration: '4s', animationDelay: '0.5s'}}>
+                            <path d="M20 50 L50 65 L80 50 L50 35 L20 50Z" stroke="#64ffda" strokeWidth="1.5" fill="rgba(10, 25, 47, 0.8)" className="path-draw" style={{animationDelay: '1s'}} />
+                            <path d="M40 50 L45 55 L55 45" stroke="#64ffda" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.8" />
+                        </g>
+                        {/* Layer 3 */}
+                        <g className="animate-bounce" style={{animationDuration: '4s', animationDelay: '1s'}}>
+                            <path d="M20 30 L50 45 L80 30 L50 15 L20 30Z" stroke="#64ffda" strokeWidth="2" fill="rgba(100, 255, 218, 0.1)" className="path-draw" style={{animationDelay: '1.5s'}} />
+                            <path d="M50 15 L80 30" stroke="#64ffda" strokeWidth="1" strokeOpacity="0.5" />
+                        </g>
+                        {/* Connecting Dots */}
+                        <circle cx="50" cy="95" r="1" fill="#64ffda" className="animate-ping" style={{animationDuration: '3s'}} />
+                        <circle cx="20" cy="70" r="1" fill="#64ffda" className="animate-ping" style={{animationDuration: '2.5s', animationDelay: '1s'}} />
+                        <circle cx="80" cy="50" r="1" fill="#64ffda" className="animate-ping" style={{animationDuration: '1.5s', animationDelay: '0.5s'}} />
+                    </svg>
                 </div>
             </div>
         </div>
