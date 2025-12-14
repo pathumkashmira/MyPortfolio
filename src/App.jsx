@@ -21,6 +21,7 @@ import AdminDashboard from './components/AdminDashboard';
 import LoginModal from './components/LoginModal'; 
 import Airdrops from './components/Airdrops';
 import NotificationPopup from './components/NotificationPopup';
+import testposter from './components/TestPoster';
 
 // 🔥 YOUR ADMIN EMAIL
 const ADMIN_EMAIL = "pethumkashmira@gmail.com"; 
