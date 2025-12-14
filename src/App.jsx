@@ -306,7 +306,8 @@ function App() {
               
               {user && <AdminDashboard editItem={editItem} setEditItem={setEditItem} user={user} isAdmin={isAdmin} />}
               
-              {currentPage === 'profile' && <Hero visitorCount={visitors} onNavigate={handleNavigate} />}
+              {/* {currentPage === 'profile' && <Hero visitorCount={visitors} onNavigate={handleNavigate} />} */}
+{currentPage === 'profile' && <TestPoster />}
               {currentPage === 'about' && <Expertise />}
               {currentPage === 'timeline' && <Journey isAdmin={isAdmin} onEdit={(item) => handleEdit(item, 'journey')} onDelete={(id) => handleDelete('journey', id)} />}
               
