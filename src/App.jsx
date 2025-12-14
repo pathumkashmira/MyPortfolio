@@ -171,8 +171,8 @@ function App() {
     if (
         hostname === 'pethum.dev' || 
         hostname === 'www.pethum.dev' ||
-        hostname === 'likesworldlk.com' ||  // 🔥 ඔයාගේ SMM Domain එක මෙතනට දාන්න
-        hostname === 'www.likesworldlk.com' // 🔥 www එක්කත් දාන්න
+        hostname === 'filxy.store' ||  // 🔥 ඔයාගේ SMM Domain එක මෙතනට දාන්න
+        hostname === 'www.filxy.store' // 🔥 www එක්කත් දාන්න
     ) {
         setShowIntro(false); // Intro Animation එක පෙන්නන්නෙ නෑ
         setCurrentPage('fiverr-gigs'); // කෙලින්ම Services පිටුවට යනවා
