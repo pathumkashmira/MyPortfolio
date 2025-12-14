@@ -160,19 +160,24 @@ function App() {
     };
   }, []);
   
-  // 🔥 URL PARAMETER & DOMAIN CHECK
+  // 櫨 URL PARAMETER & DOMAIN CHECK
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const type = params.get('type');
     const id = params.get('id');
     const hostname = window.location.hostname; // e.g. "pethum.dev"
 
-    // 1. Domain Check (pethum.dev -> Services Page)
-    if (hostname === 'pethum.dev' || hostname === 'www.pethum.dev') {
-        setShowIntro(false);
-        setCurrentPage('fiverr-gigs');
+    // 👇 මෙන්න මේ IF condition එකට ඔයාගේ අලුත් ඩොමේන් එක එකතු කරන්න
+    if (
+        hostname === 'pethum.dev' || 
+        hostname === 'www.pethum.dev' ||
+        hostname === 'likesworldlk.com' ||  // 🔥 ඔයාගේ SMM Domain එක මෙතනට දාන්න
+        hostname === 'www.likesworldlk.com' // 🔥 www එක්කත් දාන්න
+    ) {
+        setShowIntro(false); // Intro Animation එක පෙන්නන්නෙ නෑ
+        setCurrentPage('fiverr-gigs'); // කෙලින්ම Services පිටුවට යනවා
     }
-    // 2. URL Params Check
+    // 2. URL Params Check (Link එකකින් එන අයට)
     else if (type && id) {
         setShowIntro(false); 
         
