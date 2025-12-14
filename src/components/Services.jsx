@@ -129,11 +129,12 @@ export default function Services({ isAdmin, onEdit, onDelete }) {
       glowColor: "group-hover:shadow-[0_0_20px_rgba(37,99,235,0.6)]",
       icon: <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>,
       packages: [
-        { name: "1,000 Page Likes", priceUSD: "2.50", priceLKR: "850", time: "2-4 Days", desc: "For Facebook Pages", features: ["Real Profiles", "Non-Drop Guarantee", "Lifetime Warranty", "No Password Needed", "Safe for Monetization"] },
-        { name: "1,000 Profile Followers", priceUSD: "2.00", priceLKR: "700", time: "1-3 Days", desc: "For Professional Mode", features: ["High Quality Users", "Steady Growth", "Refill Button Available", "No Password Needed", "Boosts Credibility"] },
-        { name: "1,000 Post Likes", priceUSD: "1.00", priceLKR: "350", time: "12-24 Hours", desc: "Boost any FB Post", features: ["Mix Emojis Available", "Fast Delivery", "Organic Look", "No Password Needed", "Works on Photos/Videos"] },
-        { name: "100 Custom Comments", priceUSD: "3.00", priceLKR: "1000", time: "24 Hours", desc: "You provide the text", features: ["Real Accounts", "Engagement Boost", "Custom Text Supported", "No Password Needed", "Positive Vibes"] },
-        { name: "5,000 Video Views", priceUSD: "1.50", priceLKR: "500", time: "12-24 Hours", desc: "For FB Videos/Reels", features: ["Monetizable Views", "High Retention", "Instant Start", "No Password Needed", "Viral Potential"] },
+        { name: "10K Page Likes", priceUSD: "10.00", priceLKR: "3000", time: "2-48 Hours", desc: "For Facebook Pages", features: ["Real Profiles", "30 Refill", "Start 0-5 Hours", "No Password Needed", "Safe for Monetization"] },
+        { name: "10K Profile Followers", priceUSD: "5.00", priceLKR: "1500", time: "1-48 Hours", desc: "For Professional Mode", features: ["Real Profiles", "30D Refill", "Start 0-5 Hours", "No Password Needed", "Boosts Credibility"] },
+        { name: "10K Post Likes", priceUSD: "5.00", priceLKR: "1500", time: "1-24 Hours", desc: "Boost any FB Post", features: ["Like Emoji Only", "Fast Delivery", "Organic Look", "No Password Needed", "Works on Photos/Videos"] },
+        { name: "100 Custom Comments", priceUSD: "2.00", priceLKR: "600", time: "1-24 Hours", desc: "You provide the text", features: ["Real Accounts", "Engagement Boost", "Custom Text Supported", "No Password Needed", "Positive Vibes"] },
+        { name: "5K Live Stream Views", priceUSD: "10.00", priceLKR: "3000", time: "Stay 30 Min", desc: "For Facebook Live streams", features: ["Real Accounts", "Instant start", "Need Link only", "No Password Needed", "Good conditions"] },
+        { name: "10K Video Views", priceUSD: "3.00", priceLKR: "900", time: "1-24 Hours", desc: "For FB Reels", features: ["Monetizable Views", "High Retention", "Instant Start", "No Password Needed", "Viral Potential"] },
       ]
     },
     {
@@ -143,10 +144,10 @@ export default function Services({ isAdmin, onEdit, onDelete }) {
       glowColor: "group-hover:shadow-[0_0_20px_rgba(236,72,153,0.6)]",
       icon: <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>,
       packages: [
-        { name: "1,000 Followers", priceUSD: "1.00", priceLKR: "350", time: "1-2 Days", desc: "Non-Drop Guarantee", features: ["Real Looking Profiles", "Refill Button Included", "Stable Growth", "No Password Needed", "24/7 Support"] },
-        { name: "1,000 Likes", priceUSD: "0.50", priceLKR: "150", time: "1-6 Hours", desc: "For any Post/Reel", features: ["Fast Delivery", "Split Available (Min 100)", "No Password Needed", "Works on Reels/Photos", "Organic Reach"] },
-        { name: "5,000 Reel Views", priceUSD: "0.80", priceLKR: "250", time: "1-12 Hours", desc: "Go Viral Instantly", features: ["High Retention", "Explore Page Reach", "Instant Start", "No Password Needed", "Safe"] },
-        { name: "100 Comments", priceUSD: "1.50", priceLKR: "500", time: "12-24 Hours", desc: "Random or Custom", features: ["Real Users", "English/Mixed", "Engagement Boost", "No Password Needed", "Positive Feedback"] },
+        { name: "10K Followers", priceUSD: "10.00", priceLKR: "3000", time: "1-24 Hours", desc: "Non Guarantee", features: ["Real Looking Profiles", "No Refill", "Speed up to 100K/D", "No Password Needed", "Start Instant"] },
+        { name: "10K Likes", priceUSD: "5.00", priceLKR: "1500", time: "1-6 Hours", desc: "For any Post/Reel", features: ["Fast Delivery", "Split Available (Min 100)", "No Password Needed", "Works on Reels/Photos", "Organic Reach"] },
+        { name: "20K Reel Views", priceUSD: "0.80", priceLKR: "250", time: "1-12 Hours", desc: "Go Viral Instantly", features: ["High Retention", "Explore Page Reach", "Instant Start", "No Password Needed", "Safe"] },
+        { name: "100 Comments", priceUSD: "1.00", priceLKR: "300", time: "12-24 Hours", desc: "Random or Custom(Prices Are change by Type", features: ["Real Users", "English/Mixed", "Engagement Boost", "No Password Needed", "Positive Feedback"] },
       ]
     },
     {
@@ -156,10 +157,10 @@ export default function Services({ isAdmin, onEdit, onDelete }) {
       glowColor: "group-hover:shadow-[0_0_20px_rgba(0,0,0,0.6)]",
       icon: <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.65-1.58-1.15v10.07c-.01 4.12-3.35 7.48-7.46 7.48-4.15-.01-7.49-3.37-7.48-7.51.03-4.13 3.38-7.49 7.5-7.5.31 0 .63.01.93.04v4.22c-1.87-.29-3.71 1.03-4.01 2.9-.31 1.95 1.02 3.86 2.97 4.17 1.95.31 3.86-1.02 4.17-2.97.02-.13.03-.26.03-.39V.02z" />,
       packages: [
-        { name: "1,000 Views", priceUSD: "0.10", priceLKR: "50", time: "10 Mins - 1 Hour", desc: "Cheapest in the market", features: ["Super Fast", "Viral Potential", "Any Video", "No Password Needed", "Boost Ranking"] },
-        { name: "1,000 Followers", priceUSD: "2.00", priceLKR: "700", time: "2-3 Days", desc: "To Go Live", features: ["1K needed for Live", "Steady Delivery", "Non-Drop Guarantee", "No Password Needed", "Real Accounts"] },
-        { name: "1,000 Likes", priceUSD: "0.80", priceLKR: "280", time: "12-24 Hours", desc: "Video Likes", features: ["Real Accounts", "Safe Method", "No Password Needed", "Fast Start", "High Quality"] },
-        { name: "100 Shares", priceUSD: "0.50", priceLKR: "150", time: "1-6 Hours", desc: "Copy Link Shares", features: ["Algorithm Boost", "Instant", "Safe", "No Password Needed", "Profile Visits"] },
+        { name: "10K Views", priceUSD: "0.20", priceLKR: "60", time: "10 Mins - 1 Hour", desc: "Cheapest in the market", features: ["Super Fast", "Viral Potential", "Any Video", "No Password Needed", "Boost Ranking"] },
+        { name: "10K Followers", priceUSD: "10.00", priceLKR: "3000", time: "1-24 Hours", desc: "To Go Live", features: ["1K needed for Live", "Steady Delivery", "Non Guarantee", "No Password Needed", "Real Accounts"] },
+        { name: "10K Likes", priceUSD: "1.00", priceLKR: "300", time: "1-24 Hours", desc: "Video Likes", features: ["Real Accounts", "Safe Method", "No Password Needed", "Fast Start", "High Quality"] },
+        { name: "10K Shares", priceUSD: "1.00", priceLKR: "300", time: "1-6 Hours", desc: "Copy Link Shares", features: ["Algorithm Boost", "Instant", "Safe", "No Password Needed", "Profile Visits"] },
       ]
     },
     {
