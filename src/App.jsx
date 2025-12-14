@@ -21,7 +21,7 @@ import AdminDashboard from './components/AdminDashboard';
 import LoginModal from './components/LoginModal'; 
 import Airdrops from './components/Airdrops';
 import NotificationPopup from './components/NotificationPopup';
-import TestPoster from './components/TestPoster';
+//---import TestPoster from './components/TestPoster';---//
 
 // 🔥 YOUR ADMIN EMAIL
 const ADMIN_EMAIL = "pethumkashmira@gmail.com"; 
@@ -306,8 +306,7 @@ function App() {
               
               {user && <AdminDashboard editItem={editItem} setEditItem={setEditItem} user={user} isAdmin={isAdmin} />}
               
-              {/* {currentPage === 'profile' && <Hero visitorCount={visitors} onNavigate={handleNavigate} />} */}
-{currentPage === 'profile' && <TestPoster />}
+              {currentPage === 'profile' && <Hero visitorCount={visitors} onNavigate={handleNavigate} />}
               {currentPage === 'about' && <Expertise />}
               {currentPage === 'timeline' && <Journey isAdmin={isAdmin} onEdit={(item) => handleEdit(item, 'journey')} onDelete={(id) => handleDelete('journey', id)} />}
               
