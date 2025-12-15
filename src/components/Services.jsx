@@ -20,7 +20,7 @@ export default function Services({ isAdmin, onEdit, onDelete }) {
   const [calcQty, setCalcQty] = useState(1000);
 
   const [selectedPackage, setSelectedPackage] = useState(null); 
-  const WHATSAPP_NUMBER = "94769667684"; // 🔥 ඔබේ අංකය
+  const WHATSAPP_NUMBER = "94754752040"; // 🔥 ඔබේ අංකය
 
   // --- 💻 WEB PORTFOLIO PACKAGES (UNCHANGED) ---
   const packages = [
