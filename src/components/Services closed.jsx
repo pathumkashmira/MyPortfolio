@@ -20,7 +20,7 @@ export default function Services({ isAdmin, onEdit, onDelete }) {
   const [calcQty, setCalcQty] = useState(1000);
 
   const [selectedPackage, setSelectedPackage] = useState(null); 
-  const WHATSAPP_NUMBER = "94769667684"; // 🔥 ඔබේ අංකය
+  const WHATSAPP_NUMBER = "94754752040"; // 🔥 ඔබේ අංකය
 
   // --- 💻 WEB PORTFOLIO PACKAGES (UNCHANGED) ---
   const packages = [
@@ -393,7 +393,7 @@ export default function Services({ isAdmin, onEdit, onDelete }) {
         </div>
 
         {/* ======================================================= */}
-        {/* 🔥 SMM PLATFORM & PACKAGES SYSTEM (TEMPORARILY CLOSED) 🔥 */}
+        {/* 🔥 NEW SECTION: SMM PLATFORM & PACKAGES SYSTEM 🔥 */}
         {/* ======================================================= */}
         <div className="mt-24 mb-24 relative reveal">
             
@@ -401,32 +401,172 @@ export default function Services({ isAdmin, onEdit, onDelete }) {
             <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 to-pink-500/5 rounded-3xl blur-3xl -z-10"></div>
             
             <div className="text-center mb-10">
-                <span className="bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2 inline-block">
+                <span className="bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2 inline-block animate-pulse">
                     🚀 Social Media Panel
                 </span>
                 <h3 className="text-3xl font-extrabold text-stone-900 dark:text-white">
                     Social Media <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">Boosting</span>
                 </h3>
+                <p className="text-stone-500 mt-2">Select a platform to view available packages.</p>
             </div>
 
-            {/* 🚧 TEMPORARILY CLOSED VIEW 🚧 */}
-            <div className="max-w-3xl mx-auto bg-stone-50 dark:bg-[#121212] rounded-3xl border border-stone-200 dark:border-stone-800 p-10 text-center shadow-xl relative overflow-hidden">
-                <div className="absolute inset-0 bg-purple-500/5"></div>
-                
-                <div className="relative z-10 flex flex-col items-center gap-4">
-                    <div className="w-20 h-20 rounded-full bg-stone-200 dark:bg-stone-800 flex items-center justify-center mb-2">
-                         <svg className="w-10 h-10 text-stone-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                        </svg>
+            {/* 🔥 NEW: CUSTOM ORDER CALCULATOR (WITH NEON GLOW) */}
+            <div className="max-w-4xl mx-auto bg-stone-50 dark:bg-[#121212] rounded-3xl border border-stone-200 dark:border-stone-800 p-6 md:p-8 mb-16 shadow-xl relative overflow-hidden group hover:border-purple-500/50 hover:shadow-[0_0_30px_rgba(168,85,247,0.2)] transition-all duration-500">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl -z-10"></div>
+                <div className="flex flex-col md:flex-row gap-8 items-end">
+                    <div className="flex-1 w-full space-y-4">
+                        <h4 className="font-bold text-lg text-stone-900 dark:text-white flex items-center gap-2">
+                            <span className="bg-purple-100 dark:bg-purple-900/30 text-purple-600 p-1.5 rounded-lg">
+                                {/* Calculator SVG Icon */}
+                                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+                            </span> 
+                            Quick Calculator
+                        </h4>
+                        <div className="grid grid-cols-2 gap-4">
+                            <div>
+                                <label className="block text-xs font-bold text-stone-500 uppercase mb-2">Platform</label>
+                                <select 
+                                    value={calcPlatform} 
+                                    onChange={(e) => { setCalcPlatform(e.target.value); setCalcService(Object.keys(calcData[e.target.value].services)[0]); }}
+                                    className="w-full p-3 rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-700 text-sm font-bold text-stone-700 dark:text-stone-300 focus:ring-2 focus:ring-purple-500 outline-none"
+                                >
+                                    {Object.keys(calcData).map(key => <option key={key} value={key}>{calcData[key].name}</option>)}
+                                </select>
+                            </div>
+                            <div>
+                                <label className="block text-xs font-bold text-stone-500 uppercase mb-2">Service</label>
+                                <select 
+                                    value={calcService} 
+                                    onChange={(e) => setCalcService(e.target.value)}
+                                    className="w-full p-3 rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-700 text-sm font-bold text-stone-700 dark:text-stone-300 focus:ring-2 focus:ring-purple-500 outline-none"
+                                >
+                                    {Object.keys(calcData[calcPlatform].services).map(key => <option key={key} value={key}>{calcData[calcPlatform].services[key].name}</option>)}
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label className="block text-xs font-bold text-stone-500 uppercase mb-2">Quantity</label>
+                            <input 
+                                type="number" 
+                                min="100" 
+                                step="100"
+                                value={calcQty} 
+                                onChange={(e) => setCalcQty(e.target.value)}
+                                className="w-full p-3 rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-700 text-sm font-bold text-stone-700 dark:text-stone-300 focus:ring-2 focus:ring-purple-500 outline-none"
+                            />
+                        </div>
                     </div>
-                    
-                    <h4 className="text-2xl font-bold text-stone-900 dark:text-white">Temporarily Closed</h4>
-                    <p className="text-stone-500 dark:text-stone-400 max-w-md mx-auto">
-                        This service is currently unavailable due to system upgrades. We will be back shortly with better features!
-                    </p>
+
+                    <div className="w-full md:w-64 bg-white dark:bg-stone-900 p-5 rounded-2xl border border-stone-200 dark:border-stone-800 text-center relative group-hover:border-purple-500 transition-colors">
+                        <p className="text-xs text-stone-500 mb-1">Estimated Cost</p>
+                        <div className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600 mb-1">
+                            {smmCurrency === 'USD' ? `$${getCalcPrice()}` : `Rs. ${getCalcPrice()}`}
+                        </div>
+                        <p className="text-[10px] font-mono text-stone-400 mb-4">{getCalcTime()}</p>
+                        <button onClick={handleCalcOrder} className="w-full py-2 bg-stone-900 dark:bg-white text-white dark:text-black rounded-lg font-bold text-xs hover:scale-105 transition-transform">
+                            Order Custom Amount
+                        </button>
+                    </div>
                 </div>
             </div>
 
+            {/* SMM Currency Toggle (SEPARATE) */}
+            <div className="flex justify-center mb-10">
+                <div className="bg-stone-200 dark:bg-stone-800 p-1 rounded-full flex relative shadow-inner">
+                    <button onClick={() => setSmmCurrency('LKR')} className={`px-5 py-1.5 rounded-full text-xs font-bold transition-all z-10 flex items-center gap-2 ${smmCurrency === 'LKR' ? 'text-white' : 'text-stone-500'}`}>
+                        LKR (Sri Lanka)
+                    </button>
+                    <button onClick={() => setSmmCurrency('USD')} className={`px-5 py-1.5 rounded-full text-xs font-bold transition-all z-10 flex items-center gap-2 ${smmCurrency === 'USD' ? 'text-white' : 'text-stone-500'}`}>
+                        USD (Global)
+                    </button>
+                    <div className={`absolute top-1 bottom-1 w-[50%] bg-purple-600 rounded-full transition-transform duration-300 shadow-md ${smmCurrency === 'USD' ? 'translate-x-full' : 'translate-x-0'}`}></div>
+                </div>
+            </div>
+
+            {/* VIEW 1: PLATFORM SELECTION GRID (Shown if no platform selected) */}
+            {!selectedSmmPlatform && (
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 animate-fade-in-up">
+                    {smmPlatforms.map((platform) => (
+                        <div 
+                            key={platform.id}
+                            onClick={() => setSelectedSmmPlatform(platform)}
+                            className={`cursor-pointer group relative bg-white dark:bg-stone-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2 border border-stone-200 dark:border-stone-800 flex flex-col items-center justify-center p-6 h-40 hover:ring-2 hover:ring-offset-2 hover:ring-offset-stone-50 dark:hover:ring-offset-[#0c0a09] transition-all duration-300 ${platform.glowColor.replace('shadow', 'ring')}`}
+                        >
+                            <div className={`w-14 h-14 rounded-full flex items-center justify-center bg-gradient-to-br ${platform.color} text-white shadow-lg mb-3 group-hover:scale-110 transition-transform`}>
+                                <svg className="w-7 h-7 fill-current" viewBox="0 0 24 24">{platform.icon}</svg>
+                            </div>
+                            <h4 className="font-bold text-sm text-stone-900 dark:text-white">{platform.name}</h4>
+                            <p className="text-[10px] text-stone-500 uppercase tracking-widest mt-1">View Packages</p>
+                        </div>
+                    ))}
+                </div>
+            )}
+
+            {/* VIEW 2: PACKAGES LIST (Shown if platform IS selected) */}
+            {selectedSmmPlatform && (
+                <div className="animate-fade-in-up">
+                    
+                    {/* Back Button & Title */}
+                    <div className="flex items-center gap-4 mb-8">
+                        <button onClick={() => setSelectedSmmPlatform(null)} className="flex items-center gap-2 px-4 py-2 rounded-full bg-stone-200 dark:bg-stone-800 text-stone-600 dark:text-stone-300 hover:bg-stone-300 dark:hover:bg-stone-700 transition-colors text-xs font-bold">
+                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" /></svg>
+                            Back
+                        </button>
+                        <div className="flex items-center gap-3">
+                            <div className={`w-8 h-8 rounded-full flex items-center justify-center bg-gradient-to-br ${selectedSmmPlatform.color} text-white shadow-md`}>
+                                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">{selectedSmmPlatform.icon}</svg>
+                            </div>
+                            <h3 className="text-xl font-bold text-stone-900 dark:text-white">{selectedSmmPlatform.name} Packages</h3>
+                        </div>
+                    </div>
+
+                    {/* Packages Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {selectedSmmPlatform.packages.map((pkg, i) => (
+                            <div key={i} className={`group bg-white dark:bg-stone-900 rounded-2xl p-6 border border-stone-200 dark:border-stone-800 shadow-lg flex flex-col transition-all duration-300 hover:-translate-y-1 ${selectedSmmPlatform.glowColor} hover:border-transparent`}>
+                                <div className="flex justify-between items-start mb-4">
+                                    <div>
+                                        <h4 className="font-bold text-lg text-stone-900 dark:text-white">{pkg.name}</h4>
+                                        <p className="text-xs text-stone-500">{pkg.desc}</p>
+                                    </div>
+                                    <div className="text-right">
+                                        <span className="block text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
+                                            {smmCurrency === 'USD' ? `$${pkg.priceUSD}` : `Rs. ${pkg.priceLKR}`}
+                                        </span>
+                                    </div>
+                                </div>
+
+                                {/* Estimated Time Badge */}
+                                <div className="mb-4 inline-flex items-center gap-2 bg-purple-50 dark:bg-purple-900/20 px-3 py-1 rounded-full w-fit border border-purple-100 dark:border-purple-800">
+                                    <svg className="w-3 h-3 text-purple-600 dark:text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                    <span className="text-[10px] font-bold text-purple-600 dark:text-purple-400">Est. Time: {pkg.time}</span>
+                                </div>
+
+                                {/* Features */}
+                                <ul className="space-y-2 mb-6 flex-1 bg-stone-50 dark:bg-stone-800/50 p-3 rounded-lg">
+                                    {pkg.features.map((feat, j) => (
+                                        <li key={j} className="flex items-center gap-2 text-xs text-stone-600 dark:text-stone-300">
+                                            <svg className="w-3 h-3 text-green-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                                            </svg>
+                                            {feat}
+                                        </li>
+                                    ))}
+                                </ul>
+
+                                <button 
+                                    onClick={() => handleSmmOrder(pkg, selectedSmmPlatform.name)}
+                                    className="w-full py-3 rounded-xl font-bold text-sm text-white bg-stone-900 dark:bg-white dark:text-black hover:bg-purple-600 dark:hover:bg-purple-500 hover:text-white transition-all shadow-lg flex items-center justify-center gap-2 hover:scale-105 active:scale-95"
+                                >
+                                    <span>Buy Now</span>
+                                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                                </button>
+                            </div>
+                        ))}
+                    </div>
+
+                </div>
+            )}
         </div>
 
 
