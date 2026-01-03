@@ -58,3 +58,180 @@
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #57534e; border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: #10b981; }
+
+
+=====================================================
+
+
+/* ==================== NEW DASHBOARD STYLE (ADD TO YOUR MAIN CSS FILE) ==================== */
+
+.exchange-service {
+    /* Makes it slightly different from main bg if needed, 
+       or keep it same as var(--bg-color) */
+    background: var(--bg-color); 
+    padding-top: 5rem; /* Adjust based on your navbar height */
+}
+
+.exchange-dashboard-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--second-bg-color); /* Use second bg for dashboard box */
+    border-radius: 2rem;
+    padding: 3rem;
+    box-shadow: 0 0 1.5rem var(--main-color);
+    border: .2rem solid var(--main-color);
+}
+
+.exchange-grid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.exchange-card {
+    background: var(--bg-color); /* Inner cards darker again */
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    flex: 1; /* Take equal space */
+    border: .1rem solid rgba(0, 238, 255, 0.2); /* Subtle border using main color alpha */
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.card-header h3 {
+    font-size: 2rem;
+    color: var(--text-color);
+}
+
+.balance-label {
+    font-size: 1.2rem;
+    color: var(--main-color);
+    opacity: 0.8;
+}
+
+.input-container {
+    display: flex;
+    background: var(--second-bg-color);
+    border-radius: 1rem;
+    border: .1rem solid var(--main-color);
+    overflow: hidden; /* Keeps children inside rounded corners */
+}
+
+.input-container input {
+    flex: 2; /* Input takes more space */
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-color);
+    font-size: 2.4rem;
+    padding: 1.5rem;
+    font-weight: bold;
+}
+/* Remove arrows from number input */
+.input-container input::-webkit-outer-spin-button,
+.input-container input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Style for readonly output field specifically */
+.get-container input {
+    color: var(--main-color); 
+}
+
+.currency-selector {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: rgba(0, 238, 255, 0.1); /* Slight highlight using main color */
+    border-left: .1rem solid var(--main-color);
+}
+
+.currency-selector select {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-color);
+    font-size: 1.6rem;
+    padding: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+/* Dark theme friendly options for select dropdown */
+.currency-selector select option {
+    background: var(--bg-color);
+    color: var(--text-color);
+    padding: 10px;
+}
+
+
+.helper-text {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    opacity: 0.6;
+    margin-top: 1rem;
+    text-align: right;
+}
+
+.swap-indicator i {
+    font-size: 4rem;
+    color: var(--main-color);
+}
+
+/* Summary Section */
+.exchange-summary {
+    background: var(--bg-color);
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    border: .1rem solid rgba(0, 238, 255, 0.1);
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.6rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.summary-row span:last-child {
+    font-weight: bold;
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+    .exchange-grid {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .swap-indicator i {
+        transform: rotate(90deg); /* Arrow points down on mobile */
+        margin: 0.5rem 0;
+    }
+    
+    .exchange-card {
+        width: 100%;
+        padding: 2rem;
+    }
+    
+    .input-container input {
+         font-size: 2rem;
+         padding: 1rem;
+    }
+
+    .currency-selector select {
+        font-size: 1.4rem;
+        padding: 0.8rem;
+    }
+}
+/* ==================== END OF NEW DASHBOARD STYLE ==================== */
